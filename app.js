@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 13th February 2024 5:09:26 pm
+ * Last Modified: Tuesday, 13th February 2024 5:54:48 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -130,7 +130,7 @@ function render(selectedOption) {
 		case 'PrimaryQuest':
 			formRows = /*html*/ `
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="key">Quest Name</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="key" name="key" placeholder="Type the Quest ID" autocomplete="off"/>
@@ -138,7 +138,7 @@ function render(selectedOption) {
 						<p class="note bold">It must be unique</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="isActive">Is enabled?</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<label class="switch">
@@ -149,7 +149,7 @@ function render(selectedOption) {
 						<p class="note">Toggle if the quest is available</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="isCompleted">Is completed?</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<label class="switch">
@@ -160,7 +160,7 @@ function render(selectedOption) {
 						<p class="note">Toggle id the Quest is completed by default</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="currentStep">Starting step</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="number" id="currentStep" name="currentStep" placeholder="Default is 0" value="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
@@ -168,7 +168,7 @@ function render(selectedOption) {
 						<p class="note">Starting step of the Quest</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="quest_depend">Quest dependency</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="quest_depend" name="quest_depend" placeholder="Type the Quest ID / leave blank" autocomplete="off" />
@@ -176,15 +176,15 @@ function render(selectedOption) {
 						<p class="note">The quest that must be completed before this quest is available</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="quest_unrequire">Quest unrequire</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="quest_unrequire" name="quest_unrequire" autocomplete="off" placeholder="Type the Quest ID / leave blank"/>
 						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">The quest that must be unclompleted <br> from the player's quest log when this quest is started</p>
+						<p class="note">The quest that must be unclompleted from the player's quest log when this quest is started</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="quest_give_after">Quest to give after</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="quest_give_after" name="quest_give_after" autocomplete="off" placeholder="Type the Quest ID / leave blank"/>
@@ -192,7 +192,7 @@ function render(selectedOption) {
 						<p class="note">The quest that will be given after this quest is completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="items_require">Required item</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="items_require" name="items_require" autocomplete="off" placeholder="Type the Item ID / leave blank"/>
@@ -200,7 +200,7 @@ function render(selectedOption) {
 						<p class="note">The item that is required to start the quest</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="level_require">Level requirement</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="number" id="level_require" name="level_require" autocomplete="off" value="0" placeholder="Type 0 to set always available"/>
@@ -208,7 +208,7 @@ function render(selectedOption) {
 						<p class="note">The level required to start the quest</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="isStopped">Is stopped?</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<label class="switch">
@@ -216,10 +216,10 @@ function render(selectedOption) {
 							<div class="slider round"></div>
 						</label>
 						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">Toggle to prevent the start of the quest by default</p>
+						<p class="note">Toggle to prevent the start of the quest by default (useful if you use custom events)</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="label">Label</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="label" name="label" autocomplete="off" placeholder="Type the Quest Name"/>
@@ -227,15 +227,15 @@ function render(selectedOption) {
 						<p class="note">The name of the quest that will be visible to the players</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="description">Description</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<textarea class="hover" id="description" name="description" autocomplete="off" placeholder="A short description of the Quest"></textarea>
 						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">The description of the quest that will be <br> visible to the players in the Main Interface</p>
+						<p class="note">The description of the quest that will be visible to the players in the Main Interface</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="expReward">EXP Reward</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="number" id="expReward" name="expReward" autocomplete="off" value="0" placeholder="Type the EXP Amount" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
@@ -243,12 +243,12 @@ function render(selectedOption) {
 						<p class="note">The amount of EXP to reward the player with</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="zone">Zone</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="zone" name="zone" autocomplete="off" />
 						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">The zone where the quest will be available to start <br><span class="bold">NS-Medic required</p>
+						<p class="note">The zone where the quest will be available to start<span class="bold">NS-Medic required</p>
 					</div>
 					<div class="form-row">
 						<i class="ti ti-chevrons-right p-3"></i>
@@ -283,7 +283,7 @@ function render(selectedOption) {
 		case 'step':
 			formRows = /*html*/ `
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="coords">Coordinates</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="coords" name="coords" placeholder="Ex. vector3(-1046.6208, 4909.0034, 209.2752)" autocomplete="off"/>
@@ -291,15 +291,15 @@ function render(selectedOption) {
 						<p class="note">The coordinates where the step will be <span class="bold underline"> completed</span></p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="message">Tip</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="message" name="message" placeholder="Ex. vector3(-1046.6208, 4909.0034, 209.2752)" autocomplete="off"/>
 						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">The message that will be displayed in the small UI on the top right corner <br> to the player when the step is started</p>
+						<p class="note">The message that will be displayed in the small UI on the top right corner to the player when the step is started</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="gui">GUI</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<label class="switch">
@@ -310,7 +310,7 @@ function render(selectedOption) {
 						<p class="note">Toggle to enable the GUI when the step is completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="title">Title</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="title" name="title" autocomplete="off" />
@@ -318,15 +318,15 @@ function render(selectedOption) {
 						<p class="note">The title that will be displayed in the GUI (if active) when the step is completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="completeMessage">Message</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<textarea class="hover" id="completeMessage" name="completeMessage" autocomplete="off"></textarea>
 						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">The message that will be displayed <br> in the GUI (if active) when the step is completed</p>
+						<p class="note">The message that will be displayed in the GUI (if active) when the step is completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="distance">Distance</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="number" id="distance" name="distance" placeholder="Type the desidered distance" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
@@ -334,7 +334,7 @@ function render(selectedOption) {
 						<p class="note">The distance from the coordinates where the step will be completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="itemReward">Reward Item(s)</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="itemReward" name="itemReward" autocomplete="off" />
@@ -342,15 +342,15 @@ function render(selectedOption) {
 						<p class="note">The item that will be given to the player when the step is completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="removeItem">Remove Item(s)</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="removeItem" name="removeItem" autocomplete="off" />
 						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">The item(s) that will be removed from <br> the player's inventory when the step is completed</p>
+						<p class="note">The item(s) that will be removed from the player's inventory when the step is completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="expReward">EXP Reward</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="number" id="expReward" name="expReward" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
@@ -358,7 +358,7 @@ function render(selectedOption) {
 						<p class="note">The amount of EXP to reward the player with when the step is completed</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
 						<label for="stepEvent">Step Event</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<p class="toggle-note">Server</p>
@@ -390,10 +390,26 @@ $(document).ready(function () {
 		render(selectedOption);
 
 		$('#formContainer').html(formRows);
+		$('.note').css('opacity', '0');
+		$(".ti-question-mark, .ti-alert-triangle").hover(
+			function () {
+				$(this).next('.note').css('opacity', '1');
+			}, function () {
+				$(this).next('.note').css('opacity', '0');
+			}
+		);
 	});
 	$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
 		updateCode();
 	});
+	$('.note').css('opacity', '0');
+	$(".ti-question-mark, .ti-alert-triangle").hover(
+		function() {
+			$(this).next('.note').css('opacity', '1');
+		}, function() {
+			$(this).next('.note').css('opacity', '0');
+		}
+	);
 });
 
 function updateTemplate(selectedOption) {
