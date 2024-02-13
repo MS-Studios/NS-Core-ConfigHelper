@@ -1,0 +1,225 @@
+/*
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * File: style.css
+ * File Created: Monday, 12th February 2024 5:04:56 pm
+ * Author: Nebula Studios (https://discord.gg/CsphJ7Wetz)
+ *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * The modification of this file is prohibited without explicit permission from Nebula Studios.
+ * Any unauthorized modification of this file will result in support being revoked.
+ *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * Last Modified: Tuesday, 13th February 2024 1:26:08 pm
+ * Modified By: MS Studios
+ *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
+ * License Abbreviation: CC BY-NC-ND 4.0
+ * License URL: https://creativecommons.org/licenses/by-nc-nd/4.0/
+ * Copyright 2023 - 2024, Nebula Studios
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ */
+
+@import "./libs/ns-v2.css";
+
+/* Custom CSS */
+
+.form-group {
+	margin-bottom: 1rem;
+	display: flex;
+}
+
+#config {
+	background-color: var(--background-darker);
+	padding: 0.5rem;
+	border-radius: 5px;
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+#config input[type="radio"] {
+	display: none; /* Nasconde il pulsante radio originale */
+}
+
+#config label {
+	color: var(--text);
+	font-size: 1rem;
+	position: relative;
+	padding-left: 30px; /* Spazio per il nuovo pulsante radio */
+	transition: var(--ease);
+}
+
+#config label:hover {
+	cursor: pointer;
+}
+
+#config label::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--primary);
+	border-radius: 50%;
+}
+
+#config label::after {
+	content: "";
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: var(--primary);
+	opacity: 0; /* Inizialmente nascosto */
+	transition: var(--ease);
+}
+
+#config input[type="radio"]:checked + label::after {
+	opacity: 1; /* Mostra il pallino quando il pulsante radio è selezionato */
+}
+
+#output {
+	font-family: 'Courier New', Courier, monospace;
+	border-radius: 5px;
+	border: 1px solid var(--border);
+}
+
+#codeContainer {
+	position: relative;
+}
+
+#copyButton {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: var(--border-subtle);
+	border: 1px solid var(--border);
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
+	transition: var(--ease);
+}
+
+#copyButton:hover {
+	background: var(--border);
+	cursor: pointer;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 40px !important;
+	height: 20px;
+	border: none !important;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--background-darker);
+	-webkit-transition: .4s;
+	transition: .4s;
+	border: 1px solid var(--primary);
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 10px;
+	width: 10px;
+	left: 4px;
+	bottom: 4px;
+	background-color: var(--text-subtle);
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked + .slider {
+	background-color: var(--primary-subtle);
+}
+
+input:checked + .slider:before {
+	filter: var(--drop-shadow-primary);
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(20px);
+	background-color: var(--text);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+textarea {
+	width: 500px;
+	height: 200px;
+	resize: none;
+	border-radius: 5px;
+	border: 2px solid var(--primary) !important;
+	padding: 10px;
+	background-color: var(--background-darker);
+	font-family: var(--nebula-font);
+	color: var(--text-subtle);
+}
+
+textarea:focus {
+	outline: none;
+	color: var(--text);
+}
+
+input[type="text"] {
+	border-radius: 5px;
+	border: 2px solid var(--primary) !important;
+	padding: 10px;
+	background-color: var(--background-darker);
+	font-family: var(--nebula-font);
+	color: var(--text-subtle);
+	width: 500px !important;
+}
+
+input[type="text"]:focus {
+	outline: none;
+	color: var(--text);
+}
+
+input[type="number"] {
+	border-radius: 5px;
+	border: 2px solid var(--primary) !important;
+	padding: 10px;
+	background-color: var(--background-darker);
+	font-family: var(--nebula-font);
+	color: var(--text-subtle);
+	width: 500px;
+}
+
+input[type="number"]:focus {
+	outline: none;
+	color: var(--text);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
