@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 13th February 2024 1:24:33 pm
+ * Last Modified: Tuesday, 13th February 2024 3:53:33 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -96,7 +96,6 @@
 	border: 2px solid var(--primary);
 	filter: drop-shadow(0px 0px 10px var(--primary));
 	background-color: var(--background-darker);
-	cursor: pointer;
 }
 
 .hover-success:hover {
@@ -946,4 +945,13 @@ h1 {
 .form-row label {
 	width: 200px; /* Imposta la larghezza massima del testo più lungo tra i label */
 	margin-right: 10px;
+}
+
+.note {
+	font-size: 0.75rem;
+	color: var(--text-subtle);
+	margin-left: 10px;
+	white-space: wrap;
+	word-break: break-word;
+	padding: 1rem;
 }
