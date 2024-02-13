@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 13th February 2024 3:53:33 pm
+ * Last Modified: Tuesday, 13th February 2024 4:17:08 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -953,5 +953,11 @@ h1 {
 	margin-left: 10px;
 	white-space: wrap;
 	word-break: break-word;
+	padding: 1rem;
+}
+
+.toggle-note {
+	font-size: 0.75rem;
+	color: var(--text-subtle);
 	padding: 1rem;
 }

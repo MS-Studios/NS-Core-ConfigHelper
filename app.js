@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 13th February 2024 3:56:21 pm
+ * Last Modified: Tuesday, 13th February 2024 5:09:26 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -17,8 +17,8 @@
  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  */
 
-let key = '';
-let questToStart = '';
+let key = '"WARNING: NO KEY"';
+let questToStart = '"WARNING: NO QUEST TO START"';
 let mustRemove = false;
 $('#mustRemove').prop('checked', false);
 let isActive = false;
@@ -26,34 +26,37 @@ $('#isActive').prop('checked', false);
 let isCompleted = false;
 $('#isCompleted').prop('checked', false);
 let currentStep = 0;
-let quest_depend = '';
-let quest_unrequire = '';
-let quest_give_after = '';
-let items_require = '';
+let quest_depend = 'nil';
+let quest_unrequire = 'nil';
+let quest_give_after = 'nil';
+let items_require = 'nil';
 let level_require = 0;
 let isStopped = false;
 $('#isStopped').prop('checked', false);
-let label = '';
-let description = '';
+let label = '"WARNING: NO LABEL"';
+let description = '"WARNING: NO DESCRIPTION"';
 let expReward = 0;
-let zone = '';
+let zone = 'nil';
+$('#startingEventType').prop('checked', false);
 let startEvent = '';
+$('#completeEventType').prop('checked', false);
 let completedEvent = '';
-let coords = '';
-let message = '';
-let title = '';
-let completeMessage = '';
+let coords = 'WARNING: NO COORDS';
+let message = '"WARNING: NO MESSAGE"';
+let title = 'nil';
+let completeMessage = 'nil';
 let distance = 0;
 let gui = false;
 $('#gui').prop('checked', false);
-let itemReward = '';
-let removeItem = '';
-let stepEvent = '';
+let itemReward = 'nil';
+let removeItem = 'nil';
+$('#stepEventType').prop('checked', false);
+let stepEvent = 'nil';
 let template = '';
 
 function initDefaults() {
-	key = '';
-	questToStart = '';
+	key = '"WARNING: NO KEY"';
+	questToStart = '"WARNING: NO QUEST TO START"';
 	mustRemove = false;
 	$('#mustRemove').prop('checked', false);
 	isActive = false;
@@ -61,32 +64,33 @@ function initDefaults() {
 	isCompleted = false;
 	$('#isCompleted').prop('checked', false);
 	currentStep = 0;
-	quest_depend = '';
-	quest_unrequire = '';
-	quest_give_after = '';
-	items_require = '';
+	quest_depend = 'nil';
+	quest_unrequire = 'nil';
+	quest_give_after = 'nil';
+	items_require = 'nil';
 	level_require = 0;
 	isStopped = false;
 	$('#isStopped').prop('checked', false);
-	label = '';
-	description = '';
+	label = '"WARNING: NO LABEL"';
+	description = '"WARNING: NO DESCRIPTION"';
 	expReward = 0;
-	zone = '';
+	zone = 'nil';
+	$('#startingEventType').prop('checked', false);
 	startEvent = '';
+	$('#completeEventType').prop('checked', false);
 	completedEvent = '';
-	coords = '';
-	message = '';
-	title = '';
-	completeMessage = '';
+	coords = 'WARNING: NO COORDS';
+	message = '"WARNING: NO MESSAGE"';
+	title = 'nil';
+	completeMessage = 'nil';
 	distance = 0;
 	gui = false;
 	$('#gui').prop('checked', false);
-	itemReward = '';
-	removeItem = '';
-	stepEvent = '';
+	itemReward = 'nil';
+	removeItem = 'nil';
+	$('#stepEventType').prop('checked', false);
+	stepEvent = 'nil';
 	template = '';
-
-
 }
 
 function render(selectedOption) {
@@ -123,49 +127,6 @@ function render(selectedOption) {
 
 			updateTemplate(selectedOption);
 			break;
-
-		case 'PrimaryQuest_Server':
-			formRows = /*html*/`
-					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
-						<label for="key">Quest Name:</label>
-						<i class="ti ti-chevron-right p-3"></i>
-						<input class="hover" type="text" id="key" name="key" placeholder="Type the Quest ID" autocomplete="off"/>
-						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">It <span class="underline">MUST</span> be unique</p>
-					</div>
-					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
-						<label for="isActive">Is active?</label>
-						<i class="ti ti-chevron-right p-3"></i>
-						<label class="switch">
-							<input type="checkbox" id="isActive" name="isActive"/>
-							<div class="slider round"></div>
-						</label>
-						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">Toggle to make the quest available</p>
-					</div>
-					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
-						<label for="isCompleted">Is completed?</label>
-						<i class="ti ti-chevron-right p-3"></i>
-						<label class="switch">
-							<input type="checkbox" id="isCompleted" name="isCompleted"/>
-							<div class="slider round"></div>
-						</label>
-						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">Toggle to mark the quest as completed</p>
-					</div>
-					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
-						<label for="currentStep">Starting Step</label>
-						<i class="ti ti-chevron-right p-3"></i>
-						<input class="hover" type="number" id="currentStep" name="currentStep" placeholder="Default is 0"  autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
-						<i class="ti ti-question-mark p-3"></i>
-						<p class="note">The starting step number for the quest</p>
-					</div>`;
-			updateTemplate(selectedOption);
-			break;
 		case 'PrimaryQuest':
 			formRows = /*html*/ `
 					<div class="form-row">
@@ -174,7 +135,7 @@ function render(selectedOption) {
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="key" name="key" placeholder="Type the Quest ID" autocomplete="off"/>
 						<i class="ti ti-alert-triangle p-3"></i>
-						<p class="note bold">It must match the value set in the PrimaryQuest_Server</p>
+						<p class="note bold">It must be unique</p>
 					</div>
 					<div class="form-row">
 											<i class="ti ti-chevrons-right p-3"></i>
@@ -184,8 +145,8 @@ function render(selectedOption) {
 							<input type="checkbox" id="isActive" name="isActive" />
 							<div class="slider round"></div>
 						</label>
-						<i class="ti ti-alert-triangle p-3"></i>
-						<p class="note bold">It must match the value set in the PrimaryQuest_Server</p>
+						<i class="ti ti-question-mark p-3"></i>
+						<p class="note">Toggle if the quest is available</p>
 					</div>
 					<div class="form-row">
 											<i class="ti ti-chevrons-right p-3"></i>
@@ -195,16 +156,16 @@ function render(selectedOption) {
 							<input type="checkbox" id="isCompleted" name="isCompleted" />
 							<div class="slider round"></div>
 						</label>
-						<i class="ti ti-alert-triangle p-3"></i>
-						<p class="note bold">It must match the value set in the PrimaryQuest_Server</p>
+						<i class="ti ti-question-mark p-3"></i>
+						<p class="note">Toggle id the Quest is completed by default</p>
 					</div>
 					<div class="form-row">
 											<i class="ti ti-chevrons-right p-3"></i>
 						<label for="currentStep">Starting step</label>
 						<i class="ti ti-chevron-right p-3"></i>
-						<input class="hover" type="number" id="currentStep" name="currentStep" placeholder="Default is 0"  autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-						<i class="ti ti-alert-triangle p-3"></i>
-						<p class="note bold">It must match the value set in the PrimaryQuest_Server</p>
+						<input class="hover" type="number" id="currentStep" name="currentStep" placeholder="Default is 0" value="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+						<i class="ti ti-question-mark p-3"></i>
+						<p class="note">Starting step of the Quest</p>
 					</div>
 					<div class="form-row">
 											<i class="ti ti-chevrons-right p-3"></i>
@@ -242,7 +203,7 @@ function render(selectedOption) {
 											<i class="ti ti-chevrons-right p-3"></i>
 						<label for="level_require">Level requirement</label>
 						<i class="ti ti-chevron-right p-3"></i>
-						<input class="hover" type="number" id="level_require" name="level_require" autocomplete="off" placeholder="Type 0 to set always available"/>
+						<input class="hover" type="number" id="level_require" name="level_require" autocomplete="off" value="0" placeholder="Type 0 to set always available"/>
 						<i class="ti ti-question-mark p-3"></i>
 						<p class="note">The level required to start the quest</p>
 					</div>
@@ -277,7 +238,7 @@ function render(selectedOption) {
 											<i class="ti ti-chevrons-right p-3"></i>
 						<label for="expReward">EXP Reward</label>
 						<i class="ti ti-chevron-right p-3"></i>
-						<input class="hover" type="number" id="expReward" name="expReward" autocomplete="off" placeholder="Type the EXP Amount" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+						<input class="hover" type="number" id="expReward" name="expReward" autocomplete="off" value="0" placeholder="Type the EXP Amount" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
 						<i class="ti ti-question-mark p-3"></i>
 						<p class="note">The amount of EXP to reward the player with</p>
 					</div>
@@ -287,21 +248,35 @@ function render(selectedOption) {
 						<i class="ti ti-chevron-right p-3"></i>
 						<input class="hover" type="text" id="zone" name="zone" autocomplete="off" />
 						<i class="ti ti-question-mark p-3"></i>
+						<p class="note">The zone where the quest will be available to start <br><span class="bold">NS-Medic required</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
-						<label for="startEvent">Start Event</label>
-						<i class="ti ti-chevron-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
+						<label for="eventType">Starting Event</label>
+						<p class="toggle-note">Server</p>
+						<label class="switch">
+							<input type="checkbox" id="startingEventType" name="startingEventType">
+							<div class="slider round"></div>
+						</label>
+						<p class="toggle-note">Client</p>
 						<input class="hover" type="text" id="startEvent" name="startEvent" autocomplete="off" />
 						<i class="ti ti-question-mark p-3"></i>
+						<p class="note">The event that will be triggered when the Quest is started</p>
 					</div>
 					<div class="form-row">
-											<i class="ti ti-chevrons-right p-3"></i>
-						<label for="completedEvent">Complete Event</label>
-						<i class="ti ti-chevron-right p-3"></i>
+						<i class="ti ti-chevrons-right p-3"></i>
+						<label for="completeEventType">Event Type</label>
+						<p class="toggle-note">Server</p>
+						<label class="switch">
+							<input type="checkbox" id="completeEventType" name="completeEventType">
+							<div class="slider round"></div>
+						</label>
+						<p class="toggle-note">Client</p>
 						<input class="hover" type="text" id="completedEvent" name="completedEvent" autocomplete="off" />
 						<i class="ti ti-question-mark p-3"></i>
-					</div>`;
+						<p class="note">The event that will be triggered when the Quest is completed</p>
+					</div>
+					`;
 
 			updateTemplate(selectedOption);
 			break;
@@ -386,6 +361,12 @@ function render(selectedOption) {
 											<i class="ti ti-chevrons-right p-3"></i>
 						<label for="stepEvent">Step Event</label>
 						<i class="ti ti-chevron-right p-3"></i>
+						<p class="toggle-note">Server</p>
+						<label class="switch">
+							<input type="checkbox" id="stepEventType" name="stepEventType">
+							<div class="slider round"></div>
+						</label>
+						<p class="toggle-note">Client</p>
 						<input class="hover" type="text" id="stepEvent" name="stepEvent" autocomplete="off" />
 						<i class="ti ti-question-mark p-3"></i>
 						<p class="note">The event that will be triggered when the step is completed</p>
@@ -420,95 +401,183 @@ function updateTemplate(selectedOption) {
 		case 'ItemsStarters':
 
 			template = `
-				["${key}"] = {
-					questToStart = "${questToStart}",
+				[${key}] = {
+					questToStart = ${questToStart},
 					mustRemove = ${mustRemove},
-				},`;
-			break;
-
-		case 'PrimaryQuest_Server':
-
-			template = `
-				["${key}"] = {
-					isActive = ${isActive},
-					isCompleted = ${isCompleted},
-					currentStep = ${currentStep},
 				},`;
 			break;
 
 		case 'PrimaryQuest':
 
-			template = `
-				["${key}"] = {
+			let startingEventType = $('#startingEventType').prop('checked') ? 'client' : 'server';
+			let completedEventType = $('#completeEventType').prop('checked') ? 'client' : 'server';
+
+			if ((startEvent === 'nil' || startEvent === '') && (completedEvent === 'nil' || completedEvent === '')) {
+				template = `
+				[${key}] = {
 					isActive = ${isActive},
 					isCompleted = ${isCompleted},
 					currentStep = ${currentStep},
-					quest_depend = "${quest_depend}",
-					quest_unrequire = "${quest_unrequire}",
-					quest_give_after = "${quest_give_after}",
-					items_require = "${items_require}",
+					quest_depend = ${quest_depend},
+					quest_unrequire = ${quest_unrequire},
+					quest_give_after = ${quest_give_after},
+					items_require = ${items_require},
 					level_require = ${level_require},
 					isStopped = ${isStopped},
-					label = "${label}",
-					description = "${description}",
+					label = ${label},
+					description = ${description},
 					expReward = ${expReward},
-					zone = "${zone}",
-					startEvent = ${startEvent},
-					completedEvent = ${completedEvent},
+					zone = ${zone},
+					startEvent = nil,
+					completedEvent = nil,
 				},`;
+			} else if (completedEvent === 'nil' || completedEvent === '') {
+				template = `
+				[${key}] = {
+					isActive = ${isActive},
+					isCompleted = ${isCompleted},
+					currentStep = ${currentStep},
+					quest_depend = ${quest_depend},
+					quest_unrequire = ${quest_unrequire},
+					quest_give_after = ${quest_give_after},
+					items_require = ${items_require},
+					level_require = ${level_require},
+					isStopped = ${isStopped},
+					label = ${label},
+					description = ${description},
+					expReward = ${expReward},
+					zone = ${zone},
+					startEvent = {
+						type = "${startingEventType}",
+						eventName = ${startEvent},
+					},
+					completedEvent = nil,
+				},`;
+
+			} else if (startEvent === 'nil' || startEvent === '') {
+				template = `
+				[${key}] = {
+					isActive = ${isActive},
+					isCompleted = ${isCompleted},
+					currentStep = ${currentStep},
+					quest_depend = ${quest_depend},
+					quest_unrequire = ${quest_unrequire},
+					quest_give_after = ${quest_give_after},
+					items_require = ${items_require},
+					level_require = ${level_require},
+					isStopped = ${isStopped},
+					label = ${label},
+					description = ${description},
+					expReward = ${expReward},
+					zone = ${zone},
+					startEvent = nil,
+					completedEvent = {
+						type = "${completedEventType}",
+						eventName = ${completedEvent},
+					},
+				},`;
+			} else {
+
+				template = `
+					[${key}] = {
+						isActive = ${isActive},
+						isCompleted = ${isCompleted},
+						currentStep = ${currentStep},
+						quest_depend = ${quest_depend},
+						quest_unrequire = ${quest_unrequire},
+						quest_give_after = ${quest_give_after},
+						items_require = ${items_require},
+						level_require = ${level_require},
+						isStopped = ${isStopped},
+						label = ${label},
+						description = ${description},
+						expReward = ${expReward},
+						zone = ${zone},
+						startEvent = {
+							type = "${startingEventType}",
+							eventName = ${startEvent},
+						},
+						completedEvent = {
+							type = "${completedEventType}",
+							eventName = ${completedEvent},
+						},
+					},`;
+			}
 			break;
 
 		case 'step':
 
-			template = `
+			let stepEventType = $('#stepEventType').prop('checked') ? 'client' : 'server';
+			if (stepEvent === 'nil' || stepEvent === '') {
+				template = `
 				{
 					coords = ${coords},
-					message = "${message}",
-					title = "${title}",
-					completeMessage = "${completeMessage}",
+					message = ${message},
+					title = ${title},
+					completeMessage = ${completeMessage},
 					distance = ${distance},
 					gui = ${gui},
 					itemReward = ${itemReward},
 					removeItem = ${removeItem},
 					expReward = ${expReward},
-					stepEvent = ${stepEvent},
+					stepEvent = nil,
 				},`;
+			} else {
+				template = `
+					{
+						coords = ${coords},
+						message = ${message},
+						title = ${title},
+						completeMessage = ${completeMessage},
+						distance = ${distance},
+						gui = ${gui},
+						itemReward = ${itemReward},
+						removeItem = ${removeItem},
+						expReward = ${expReward},
+						stepEvent = {
+							type = "${stepEventType}",
+							eventName = ${stepEvent},
+						}
+					},`;
+			}
 			break;
 	}
 	generateCode(template);
 }
 
 function updateCode() {
-	key = $('#key').val();
-	questToStart = $('#questToStart').val();
+	key = $('#key').val() ? `"${$('#key').val()}"` : '"WARNING: NO KEY"';
+	questToStart = $('#questToStart').val() ? `"${$('#questToStart').val()}"` : 'nil';
 	mustRemove = $('#mustRemove').prop('checked');
 
 	isActive = $('#isActive').prop('checked');
 	isCompleted = $('#isCompleted').prop('checked');
-	currentStep = $('#currentStep').val();
-
-	quest_depend = $('#quest_depend').val();
-	quest_unrequire = $('#quest_unrequire').val();
-	quest_give_after = $('#quest_give_after').val();
-	items_require = $('#items_require').val();
-	level_require = $('#level_require').val();
+	currentStep = $('#currentStep').val() || 0;
+	quest_depend = $('#quest_depend').val() ? `"${$('#quest_depend').val()}"` : 'nil';
+	quest_unrequire = $('#quest_unrequire').val() ? `"${$('#quest_unrequire').val()}"` : 'nil';
+	quest_give_after = $('#quest_give_after').val() ? `"${$('#quest_give_after').val()}"` : 'nil';
+	items_require = $('#items_require').val() ? `"${$('#items_require').val()}"` : 'nil';
+	level_require = $('#level_require').val() || 0;
 	isStopped = $('#isStopped').prop('checked');
-	label = $('#label').val();
-	description = $('#description').val();
-	expReward = $('#expReward').val();
-	zone = $('#zone').val();
-	startEvent = $('#startEvent').val();
-	completedEvent = $('#completedEvent').val();
+	label = $('#label').val() ? `"${$('#label').val()}"` : '"WARNING: NO LABEL"';
+	description = $('#description').val() ? `"${$('#description').val()}"` : '"WARNING: NO DESCRIPTION"';
+	expReward = $('#expReward').val() || 0;
+	zone = $('#zone').val() ? `"${$('#zone').val()}"` : 'nil';
+	startingEventType = $('#startingEventType').prop('checked') ? '"client"' : '"server"';
+	startEvent = $('#startEvent').val() ? `"${$('#startEvent').val()}"` : 'nil';
+	completedEventType = $('#completeEventType').prop('checked') ? '"client"' : '"server"';
+	completedEvent = $('#completedEvent').val() ? `"${$('#completedEvent').val()}"` : 'nil';
 
-	coords = $('#coords').val();
-	message = $('#message').val();
-	title = $('#title').val();
-	completeMessage = $('#completeMessage').val();
-	distance = $('#distance').val();
+	coords = $('#coords').val() ? `"${$('#coords').val()}"` : '"WARNING: NO COORDS"';
+	message = $('#message').val() ? `"${$('#message').val()}"` : '"WARNING: NO MESSAGE"';
+	title = $('#title').val() ? `"${$('#title').val()}"` : 'nil';
+	completeMessage = $('#completeMessage').val() ? `"${$('#completeMessage').val()}"` : 'nil';
+	distance = $('#distance').val() || 0;
 	gui = $('#gui').prop('checked');
-	itemReward = $('#itemReward').val();
-	removeItem = $('#removeItem').val();
-	stepEvent = $('#stepEvent').val();
+	itemReward = $('#itemReward').val() ? `"${$('#itemReward').val()}"` : 'nil';
+	removeItem = $('#removeItem').val() ? `"${$('#removeItem').val()}"` : 'nil';
+	stepEventType = $('#stepEventType').prop('checked') ? '"client"' : '"server"';
+	stepEvent = $('#stepEvent').val() ? `"${$('#stepEvent').val()}"` : 'nil';
 
 	updateTemplate($('input[name="config"]:checked').val());
 }
