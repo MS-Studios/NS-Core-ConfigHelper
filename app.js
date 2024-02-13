@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 13th February 2024 1:19:46 pm
+ * Last Modified: Tuesday, 13th February 2024 2:42:46 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -269,10 +269,10 @@ function render(selectedOption) {
 	$('#formContainer').html(formRows);
 };
 
-
 $(document).ready(function () {
 	initDefaults();
-	selectedOption = $('input[name="config"]:checked').val();
+	selectedOption = 'ItemsStarters';
+	console.log(selectedOption);
 	render(selectedOption);
 	$('#formContainer').html(formRows);
 	$('input[name="config"]').on('change', function () {
