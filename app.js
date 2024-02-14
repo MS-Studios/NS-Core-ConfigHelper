@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Wednesday, 14th February 2024 9:52:57 pm
+ * Last Modified: Thursday, 15th February 2024 12:04:24 am
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -503,7 +503,7 @@ function render(selectedOption) {
 						<label for="completeMessage">Message</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<div class="input-group">
-							<textarea class="hover" id="completeMessage" name="completeMessage" autocomplete="off"></textarea>
+							<textarea class="hover" id="completeMessage" name="completeMessage" placeholder="Type the text you want to show when the step is completed" autocomplete="off"></textarea>
 							<div class="input-group-append">
 								<i class="ti ti-question-mark"></i>
 								<p class="note">The message that will be displayed in the GUI (if active) when the step is completed</p>
