@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 13th February 2024 4:16:54 pm
+ * Last Modified: Wednesday, 14th February 2024 6:01:59 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -113,7 +113,7 @@
 	width: 40px !important;
 	height: 20px;
 	border: none !important;
-	margin: 0 !important;
+	margin: 0 1rem !important;
 }
 
 .switch input {
@@ -169,15 +169,17 @@ input:checked + .slider:before {
 }
 
 textarea {
-	width: 500px;
-	height: 200px;
+	width: 100%;
+	height: auto;
 	resize: none;
 	border-radius: 5px;
-	border: 2px solid var(--primary) !important;
+	border: 2px solid var(--border) !important;
 	padding: 10px;
 	background-color: var(--background-darker);
 	font-family: var(--nebula-font);
 	color: var(--text-subtle);
+	overflow: visible;
+	resize: vertical;
 }
 
 textarea:focus {
@@ -187,27 +189,28 @@ textarea:focus {
 
 input[type="text"] {
 	border-radius: 5px;
-	border: 2px solid var(--primary) !important;
+	border: 2px solid var(--border);
 	padding: 10px;
 	background-color: var(--background-darker);
 	font-family: var(--nebula-font);
 	color: var(--text-subtle);
-	width: 500px !important;
+	width: 100% !important;
 }
 
 input[type="text"]:focus {
 	outline: none;
 	color: var(--text);
+	border: 2px solid var(--primary) !important;
 }
 
 input[type="number"] {
 	border-radius: 5px;
-	border: 2px solid var(--primary) !important;
+	border: 2px solid var(--border);
 	padding: 10px;
 	background-color: var(--background-darker);
 	font-family: var(--nebula-font);
 	color: var(--text-subtle);
-	width: 500px;
+	width: 100% !important;
 }
 
 input[type="number"]:focus {

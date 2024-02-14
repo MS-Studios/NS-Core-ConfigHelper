@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 13th February 2024 5:50:07 pm
+ * Last Modified: Wednesday, 14th February 2024 6:01:22 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -32,6 +32,7 @@
 	--border: #5a5a5a41;
 	--text: #fffcf2;
 	--text-subtle: #b9b9b9;
+	--note: #b9b9b9b0;
 	--background: #252422;
 	--background-darker: #131211;
 	--background-subtle: #131211d2;
@@ -93,7 +94,7 @@
 
 .hover:hover {
 	transform: translateY(-5px);
-	border: 2px solid var(--primary);
+	border: 2px solid var(--primary) !important;
 	filter: drop-shadow(0px 0px 10px var(--primary));
 	background-color: var(--background-darker);
 }
@@ -724,20 +725,53 @@ body {
 	border-radius: 5px;
 }
 
-.border-primary {
-	border: 2px solid var(--primary);
+.b1-bottom {
+	border-bottom: 1px solid;
 }
 
+.b1-top {
+	border-top: 1px solid;
+}
+
+.b1-left {
+	border-left: 1px solid;
+}
+
+.b1-right {
+	border-right: 1px solid;
+}
+
+.b2-bottom {
+	border-bottom: 2px solid;
+}
+
+.b2-top {
+	border-top: 2px solid;
+}
+
+.b2-left {
+	border-left: 2px solid;
+}
+
+.b2-right {
+	border-right: 2px solid;
+}
+
+.border-primary {
+	border-color: var(--primary);
+}
+
+
 .border-success {
-	border: 2px solid var(--success);
+	border-color: var(--success);
 }
 
 .border-danger {
-	border: 2px solid var(--danger);
+	border-color: var(--danger);
 }
 
 .border-subtle {
-	border: 2px solid var(--border-subtle);
+	border-color: var(--border-subtle);
 }
 
 .shadow {
@@ -855,6 +889,10 @@ h1 {
 	flex-direction: column;
 }
 
+.flex-row {
+	flex-direction: row;
+}
+
 .d-inline {
 	display: inline;
 }
@@ -928,6 +966,7 @@ h1 {
 	border-left: 2px solid var(--primary-subtle);
 	padding: 0.5rem;
 	width: 100px;
+	flex-shrink: 0;
 }
 
 .form-group input:focus {
@@ -939,7 +978,6 @@ h1 {
 .form-row {
 	display: flex;
 	align-items: center;
-	margin-bottom: 10px;
 }
 
 .form-row label {
@@ -949,17 +987,34 @@ h1 {
 
 .note {
 	font-size: 0.75rem;
-	color: var(--text-subtle);
+	color: var(--note);
 	margin-left: 10px;
 	white-space: wrap;
 	word-break: break-word;
-	padding: 1rem;
-	width: 500px;
+	width: 100%;
+	height: auto;
 	transition: var(--ease);
 }
 
 .toggle-note {
 	font-size: 0.75rem;
 	color: var(--text-subtle);
-	padding: 1rem;
+	padding: 0;
+}
+
+.input-group {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	width: 550px;
+}
+
+.input-group-append {
+	display: flex;
+	align-items: center;
+}
+
+.divider {
+	border-top: 1px solid var(--border);
+	margin: 1rem 0;
 }
