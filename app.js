@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Wednesday, 14th February 2024 6:07:27 pm
+ * Last Modified: Wednesday, 14th February 2024 9:52:57 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -488,7 +488,7 @@ function render(selectedOption) {
 						<label for="title">Title</label>
 						<i class="ti ti-chevron-right p-3"></i>
 						<div class="input-group">
-							<input class="hover" type="text" id="title" name="title" autocomplete="off" />
+							<input class="hover" type="text" id="title" name="title" placeholder="Type a short title" autocomplete="off" />
 							<div class="input-group-append">
 								<i class="ti ti-question-mark"></i>
 								<p class="note">The title that will be displayed in the GUI (if active) when the step is completed</p>
