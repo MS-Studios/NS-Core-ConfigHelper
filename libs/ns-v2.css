@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Wednesday, 14th February 2024 8:47:08 pm
+ * Last Modified: Monday, 19th February 2024 5:51:57 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -30,6 +30,7 @@
 	--primary-subtle: #eb5f2863;
 	--selection: #eb5f281a;
 	--border: #5a5a5a41;
+	--grid: #1d1d1d7c;
 	--text: #fffcf2;
 	--text-subtle: #b9b9b9;
 	--note: #b9b9b9b0;
@@ -63,30 +64,36 @@
 
 .btn {
 	padding: 0.5rem 1rem;
-	border-radius: 10px;
-	border: 2px solid var(--transparent);
-	background-color: var(--background-darker);
+	border-radius: .5rem;
+	border: 1px solid var(--border-subtle);
+	background-color: var(--background-subtle);
 	color: var(--text);
 	transition: var(--ease);
+	width: fit-content;
+}
+
+.btn:hover {
+	border: 1px solid var(--text-subtle);
+	filter: drop-shadow(0px 0px 10px var(--border));
+	cursor: pointer;
 }
 
 .btn-primary {
-	border: 2px solid var(--primary);
-	background-color: var(--primary);
+	border: 1px solid var(--primary);
+	background-color: var(--primary-subtle);
 	color: var(--text);
 }
 
 .btn-primary:hover {
-	transform: translateY(-5px);
-	border: 2px solid var(--primary);
+	border: 1px solid var(--primary);
 	filter: drop-shadow(0px 0px 10px var(--primary));
-	background-color: var(--background-darker);
 	cursor: pointer;
 }
 
 .hover,
 .hover-danger,
-.hover-success {
+.hover-success,
+.hover-body {
 	transition: var(--ease);
 	border-radius: 10px;
 	border: 2px solid var(--transparent);
@@ -115,6 +122,12 @@
 	cursor: pointer;
 }
 
+.hover-body:hover {
+	transform: scale(1.1);
+	filter: drop-shadow(0px 0px 10px var(--text));
+	cursor: pointer;
+}
+
 .active-danger {
 	border: 2px solid var(--danger);
 	filter: drop-shadow(0px 0px 10px var(--danger));
@@ -125,6 +138,10 @@
 	border: 2px solid var(--success);
 	filter: drop-shadow(0px 0px 10px var(--success));
 	background-color: var(--success-subtle);
+}
+
+.rem-underline {
+	text-decoration: none;
 }
 
 .pointer {
@@ -141,10 +158,6 @@
 
 .r-5 {
 	border-radius: 5px;
-}
-
-.active {
-	border-bottom: 2px solid var(--primary);
 }
 
 .container,
@@ -207,6 +220,10 @@ body {
 	background-color: var(--primary);
 }
 
+.bg-primary-subtle {
+	background-color: var(--primary-subtle);
+}
+
 .bg-success {
 	background-color: var(--success);
 }
@@ -235,8 +252,34 @@ body {
 	background-color: var(--background-darker);
 }
 
-.blur {
+.bg-grid {
+	background-image: linear-gradient(90deg, var(--grid) 1px, var(--transparent) 1px),
+		linear-gradient(0deg, var(--grid) 1px, var(--transparent) 1px);
+	background-size: 60px 60px;
+}
+
+.bg-grid::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-darker);
+	opacity: 1;
+	z-index: -1;
+}
+
+.blur-1 {
+	backdrop-filter: blur(1px);
+}
+
+.blur-5 {
 	backdrop-filter: blur(5px);
+}
+
+.blur-10 {
+	backdrop-filter: blur(10px);
 }
 
 .m-0 {
@@ -415,6 +458,14 @@ body {
 
 .mb-5 {
 	margin-bottom: 3rem !important;
+}
+
+.mb-6 {
+	margin-bottom: 6rem !important;
+}
+
+.mb-7 {
+	margin-bottom: 12rem !important;
 }
 
 .mb-auto {
@@ -673,6 +724,14 @@ body {
 	color: var(--text);
 }
 
+.text-body-subtle {
+	color: var(--text-subtle);
+}
+
+.text-dark {
+	color: var(--background-darker);
+}
+
 .bold {
 	font-weight: 700;
 }
@@ -790,6 +849,18 @@ body {
 	filter: var(--drop-shadow-primary);
 }
 
+.shadow-text {
+	filter: var(--drop-shadow-text);
+}
+
+.mask {
+    background: var(--primary);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
 .scroll-y {
 	overflow-y: auto;
 }
@@ -882,6 +953,72 @@ h1 {
 	height: 25% !important;
 }
 
+a {
+	text-decoration: none;
+	color: var(--text);
+	transition: var(--ease);
+}
+
+.tab {
+	color: var(--text-subtle);
+	transition: var(--ease);
+	border-bottom: 1px solid var(--transparent);
+}
+
+.tab:hover {
+	color: var(--primary);
+	cursor: pointer;
+	border-bottom: 1px solid var(--primary);
+	filter: var(--drop-shadow-primary);
+}
+
+.tab:hover a {
+	color: var(--primary);
+}
+
+.active {
+	color: var(--primary);
+	border-bottom: 1px solid var(--primary);
+	filter: var(--drop-shadow-primary);
+}
+
+.active > a {
+	color: var(--primary);
+}
+
+.inactive,
+.inactive > a {
+	color: var(--text-subtle);
+}
+
+#preloader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-darker);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+#loader {
+	font-size: 2em;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 .footer {
 	position: absolute;
 	bottom: 0;
@@ -905,12 +1042,18 @@ h1 {
 	display: inline;
 }
 
-.grid {
+.d-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
 	width: 100%;
 	height: 100%;
+}
+
+.row {
+	grid-template-rows: 1fr;
+}
+
+.col {
+	grid-template-columns: 1fr;
 }
 
 .center {
@@ -1025,4 +1168,10 @@ h1 {
 .divider {
 	border-top: 1px solid var(--border);
 	margin: 1rem 0;
+}
+
+.divider-vert {
+	height: 50%;
+	border-left: 1px solid var(--border);
+	margin: 0 1rem;
 }
