@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 15th February 2024 12:04:24 am
+ * Last Modified: Monday, 19th February 2024 7:34:29 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -601,21 +601,29 @@ function render(selectedOption) {
 };
 
 $(document).ready(function () {
-	initDefaults();
-	selectedOption = $('input[name="config"]:checked').val();
-	render(selectedOption);
-	$('#formContainer').html(formRows);
-	$('input[name="config"]').on('change', function () {
+	// check if the site is running on mobile or desktop (The configurator is not meant to be used on mobile, fuck everyone)
+	if (/Mobi/.test(navigator.userAgent)) {
+		$('#mobileWarning').show();
+		$('.main').hide();
+	} else {
+		$('#mobileWarning').hide();
+		$('.main').show();
 		initDefaults();
-		var selectedOption = $(this).val();
-
+		selectedOption = $('input[name="config"]:checked').val();
 		render(selectedOption);
-
 		$('#formContainer').html(formRows);
-	});
-	$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
-		updateCode();
-	});
+		$('input[name="config"]').on('change', function () {
+			initDefaults();
+			var selectedOption = $(this).val();
+
+			render(selectedOption);
+
+			$('#formContainer').html(formRows);
+		});
+		$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
+			updateCode();
+		});
+	};
 });
 
 function updateTemplate(selectedOption) {
