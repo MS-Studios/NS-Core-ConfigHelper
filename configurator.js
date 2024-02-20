@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 20th February 2024 5:08:29 pm
+ * Last Modified: Tuesday, 20th February 2024 5:17:32 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -361,7 +361,7 @@ $(document).ready(function () {
 		$('input[name="config"]').on('change', function () {
 			initDefaults();
 			var selectedOption = $(this).val();
-
+			console.log(selectedOption)
 			render(selectedOption);
 
 			$('#formContainer').html(formRows);
@@ -381,13 +381,13 @@ $(document).ready(function () {
 			);
 		});
 		$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
-			console.log(selectedOption)
+
 			updateTemplate(selectedOption)
 			let changedInput = $(this).attr('name');
 
 			if (changedInput === 'isMpModel') {
 				isMpModel = $(this).is(':checked');
-				render(selectedOption);
+				render('peds');
 				$('#formContainer').html(formRows);
 				// Reimposta lo stato del checkbox dopo aver rigenerato il form
 				$('#isMpModel').prop('checked', isMpModel);
