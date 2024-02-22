@@ -7,7 +7,7 @@ Author: Nebula Studios (https://discord.gg/CsphJ7Wetz)
 The modification of this file is prohibited without explicit permission from Nebula Studios.
 Any unauthorized modification of this file will result in support being revoked.
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Last Modified: Wednesday, 21st February 2024 11:59:43 pm
+Last Modified: Thursday, 22nd February 2024 1:40:22 pm
 Modified By: MS Studios
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -19,87 +19,281 @@ Copyright 2023 - 2024, Nebula Studios
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link rel="icon" href="./assets/default.ico" type="image/x-icon" />
-		<meta charset="UTF-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="ie=edge" http-equiv="X-UA-Compatible" />
 
-		<script
-			src="https://code.jquery.com/jquery-3.7.1.min.js"
-			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-			crossorigin="anonymous"
-		></script>
+<head>
+	<link rel="icon" href="./assets/default.ico" type="image/x-icon" />
+	<meta charset="UTF-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="ie=edge" http-equiv="X-UA-Compatible" />
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-		<link rel="stylesheet" href="../libs/tabler-icons/tabler-icons.css" />
-		<link rel="stylesheet" href="./libs/ns-v2.css">
-		<link href="./style.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
 
-		<title>NS Core</title>
-	</head>
+	<link rel="stylesheet" href="../libs/tabler-icons/tabler-icons.css" />
+	<link rel="stylesheet" href="./libs/ns-v2.css">
+	<link href="./style.css" rel="stylesheet" type="text/css" />
 
-	<body data-ns-theme="dark">
-		<div id="preloader">
-			<i id="loader" class="ti ti-loader-2"></i>
-			<h4 class="text-primary shadow-primary">Loading...</h4>
-		</div>
-		<div class="main bg-grid scroll-y d-flex flex-col">
-			<nav class="navbar bg-dark-subtle blur-1 d-flex ps-5 pe-5 w-100 h-auto b1-bottom border-subtle">
-				<div class="d-flex justify-start w-100 align-center">
-					<span class="b1 border-subtle shadow rounded ns-icon ns-icon-md p-1 me-3">
-						<img class="img-fluid" src="./assets/default.ico" alt="NS Core"/>
-					</span>
-					<a href="./index.html">
-						<h3 class="text-primary pointer">NS Core</h3>
-					</a>
-				</div>
-				<div class="d-flex justify-end w-auto gap-3 align-center">
-					<a href="https://discord.nebulastudios.software" target="_blank">
-						<i class="ti ti-brand-discord hover-body"></i>
-					</a>
-					<a href="https://github.com/Nebula-Studios-Software" target="_blank">
-						<i class="ti ti-brand-github hover-body"></i>
-					</a>
-					<a href="https://store.nebulastudios.software" target="_blank">
-						<i class="ti ti-shopping-bag hover-body"></i>
-					</a>
-				</div>
-			</nav>
-			<div class="container d-flex flex-col justify-center align-center mt-5 gap-3">
-				<h1 class="text-body">Welcome to <span id="core-title" class="bold text-dark bg-primary-subtle p-1 rounded b1 border-primary shadow-primary"> NS-Core</span></h1>
-				<h4 id="core-subtitle" class="text-body text-center">The ultimate <span class="bold text-primary shadow-primary">quest system </span> for your FiveM server</h4>
-				<div class="d-flex justify-center align-center gap-3">
-					<a class="btn btn-primary" href="./configurator.html">
-						<i class="ti ti-settings-2 p-1"></i>
-						Configurator
-					</a>
+	<title>NS Core</title>
+</head>
 
-					<a class="btn" href="https://docs.nebulastudios.software" target="_blank">
-						<i class="ti ti-book p-1"></i>
-						Documentation
-					</a>
-				</div>
-				<div class="divider"></div>
-				<div class="card d-flex justify-center flex-col align-center gap-3">
-					<div class="card-header">Stay Updated
-					</div>
-					<div class="card-body text-center">
-						Follow the <span class="text-primary shadow-primary bold">updates</span> and suggest <span class="text-info shadow-info bold">new features</span> on our GitHub
-					</div>
-				</div>
-				<a class="btn" href="https://github.com/Nebula-Studios-Software" target="_blank">
-					<i class="ti ti-brand-github"></i>
-					GitHub
+<body data-ns-theme="dark">
+	<!-- <div id="preloader">
+		<i id="loader" class="ti ti-loader-2"></i>
+		<h4 class="text-primary shadow-primary">Loading...</h4>
+	</div> -->
+	<div class="main bg-grid scroll-y d-flex flex-col">
+		<nav class="navbar bg-dark-subtle blur-1 d-flex p-3 w-100 h-auto b1-bottom border-subtle">
+			<div class="d-flex justify-start w-100 align-center">
+				<span class="b1 border-subtle shadow rounded ns-icon ns-icon-md p-1 me-3">
+					<img class="img-fluid" src="./assets/default.ico" alt="NS Core" />
+				</span>
+				<a href="./index.html">
+					<h3 class="text-primary pointer">NS Core</h3>
 				</a>
 			</div>
-			<div class="footer bg-dark-subtle blur-1 d-flex justify-center gap-3 align-baseline b1-top border-subtle">
-				<p class="toggle-note">v.1.0.0</p>
-				<p class="toggle-note">© 2023 - 2024 Nebula Studios. All rights reserved.</p>
+			<div class="d-flex justify-end w-auto gap-3 align-center">
+				<a href="https://discord.nebulastudios.software" target="_blank">
+					<i class="ti ti-brand-discord hover-body"></i>
+				</a>
+				<a href="https://github.com/Nebula-Studios-Software" target="_blank">
+					<i class="ti ti-brand-github hover-body"></i>
+				</a>
+				<a href="https://store.nebulastudios.software" target="_blank">
+					<i class="ti ti-shopping-bag hover-body"></i>
+				</a>
+			</div>
+		</nav>
+		<div class="container-fluid d-flex flex-col justify-center align-center mt-5 gap-3">
+			<h1 class="text-body">Welcome to <span id="core-title"
+					class="bold text-dark bg-primary-subtle p-1 rounded b1 border-primary shadow-primary">
+					NS-Core</span></h1>
+			<h4 id="core-subtitle" class="text-body text-center">The ultimate <span
+					class="bold text-primary shadow-primary">quest system </span> for your FiveM server</h4>
+			<div class="d-flex justify-center align-center gap-3">
+				<a class="btn btn-primary" href="./configurator.html">
+					<i class="ti ti-settings-2 p-1"></i>
+					Configurator
+				</a>
+
+				<a class="btn" href="https://docs.nebulastudios.software" target="_blank">
+					<i class="ti ti-book p-1"></i>
+					Documentation
+					<i class="ti ti-external-link p-1 text-body-subtle"></i>
+				</a>
+			</div>
+			<div class="divider"></div>
+			<div class="row mt-3">
+				<div class="col-auto">
+					<div class="card card-info d-flex justify-center flex-col align-center gap-3">
+						<div class="card-header text-body-subtle w-100">
+							<i class="ti ti-versions"></i>
+							Stay Updated
+						</div>
+						<div class="card-body text-center">
+							Follow the <span class="text-info shadow-info bold">updates</span> and suggest <span
+								class="text-info shadow-info bold">new features</span> on our GitHub
+						</div>
+						<a href="https://github.com/orgs/Nebula-Studios-Software/projects/1/views/2" target="_blank"
+							class="card-footer w-100 hover-info">
+							<i class="ti ti-brand-github"></i>
+							GitHub
+							<i class="ti ti-external-link p-1 text-body-subtle"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-auto">
+					<div class="card d-flex justify-center flex-col align-center gap-3">
+						<div class="card-header text-body-subtle w-100">
+							<i class="ti ti-shopping-bag"></i>
+							Store
+						</div>
+						<div class="card-body text-center">
+							Explore our <span class="text-primary shadow-primary bold">store</span> and get access to
+							premium resources
+						</div>
+						<a href="https://store.nebulastudios.software" target="_blank"
+							class="card-footer w-100 hover-body">
+							<i class="ti ti-shopping-bag"></i>
+							Store
+							<i class="ti ti-external-link p-1 text-body-subtle"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-auto">
+					<div class="card card-violet d-flex justify-center flex-col align-center gap-3">
+						<div class="card-header text-body-subtle w-100">
+							<i class="ti ti-progress-help"></i>
+
+							Support
+						</div>
+						<div class="card-body text-center">
+							Need help? Join our <span class="text-violet shadow-violet bold">Discord</span> server and
+							get
+							assistance from our team
+						</div>
+						<a href="https://discord.nebulastudios.software" target="_blank"
+							class="card-footer w-100 hover-violet">
+							<i class="ti ti-brand-discord"></i>
+							Discord
+							<i class="ti ti-external-link p-1 text-body-subtle"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="divider"></div>
+			<h3 class="text-primary shadow-primary">Our commitment</h3>
+			<div class="features-grid p-2">
+
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-chevrons-up"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Fully customizable</h6>
+						<p class="toggle-note">Customize anything you feel like!</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-school"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Easy to use</h6>
+						<p class="toggle-note">Whether you know coding or not, we got you covered</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-brand-safari"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Performance & quality</h6>
+						<p class="toggle-note">Our resources are heavily tested and carefully refined regurarly</p>
+					</div>
+				</div>
+
+				<!-- row 2 -->
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-messages"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Translations</h6>
+						<p class="toggle-note">Our resources can support any language</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-user-shield"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Dedicated Support</h6>
+						<p class="toggle-note">We always offer free dedicated support with every resource</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-settings-2"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Exploit free</h6>
+						<p class="toggle-note">Our resources comes with full proection against exploits</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="divider"></div>
+
+
+			<h3 class="text-primary shadow-primary">Features</h3>
+			<div class="features-grid rounded p-2">
+
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-chevrons-up"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Create your level system</h6>
+						<p class="toggle-note">Entertain your players endlessly</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-school"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Assign unique perks</h6>
+						<p class="toggle-note">Based on EXP to incentivize player progress Customize requirements,
+							effects images and descriptions</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-brand-safari"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Offer unique quests</h6>
+						<p class="toggle-note">Customize PEDs, requirements, conditions and add as many steps you want
+						</p>
+					</div>
+				</div>
+
+				<!-- row 2 -->
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-messages"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Engagement features</h6>
+						<p class="toggle-note">Mention players, their jobs and much more in quest messages</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-user-shield"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Admin Panel</h6>
+						<p class="toggle-note">Manage quests directly in-game. <br> Monitor players infos, level, EXP
+							and perks</p>
+					</div>
+				</div>
+
+				<div class="features-grid-item">
+					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+						<i class="ti ti-settings-2"></i>
+					</div>
+					<div class="d-flex flex-col justify-center align-start gap-3">
+						<h6 class="text-body">Configurator</h6>
+						<p class="toggle-note">Easily configure your quests and perks with our user-friendly
+							configurator</p>
+					</div>
+				</div>
+
 			</div>
 		</div>
-	</body>
-	<script src="./app.js"></script>
+		<div
+			class="footer mt-5 p-3 bg-dark-subtle blur-1 d-flex justify-center gap-3 align-baseline b1-top border-subtle">
+			<p class="toggle-note">v.1.0.0</p>
+			<p class="toggle-note">© 2023 - 2024 Nebula Studios. All rights reserved.</p>
+		</div>
+	</div>
+</body>
+<script src="./app.js"></script>
+
 </html>

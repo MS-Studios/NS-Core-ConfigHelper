@@ -7,7 +7,7 @@ Author: Nebula Studios (https://discord.nebulastudios.software)
 The modification of this file is prohibited without explicit permission from Nebula Studios.
 Any unauthorized modification of this file will result in support being revoked.
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Last Modified: Wednesday, 21st February 2024 11:06:00 pm
+Last Modified: Thursday, 22nd February 2024 1:57:06 pm
 Modified By: MS Studios
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -19,148 +19,116 @@ Copyright 2023 - 2024, Nebula Studios
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link rel="icon" href="./assets/default.ico" type="image/x-icon" />
-		<meta charset="UTF-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="ie=edge" http-equiv="X-UA-Compatible" />
 
-		<script
-			src="https://code.jquery.com/jquery-3.7.1.min.js"
-			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-			crossorigin="anonymous"
-		></script>
+<head>
+	<link rel="icon" href="./assets/default.ico" type="image/x-icon" />
+	<meta charset="UTF-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="ie=edge" http-equiv="X-UA-Compatible" />
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-		<link
-			href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css"
-			rel="stylesheet"
-		/>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-		<link rel="stylesheet" href="../libs/tabler-icons/tabler-icons.css" />
-		<link rel="stylesheet" href="./libs/ns-v2.css" />
-		<link href="./style.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
 
-		<title>NS-Core Configurator</title>
-	</head>
+	<link rel="stylesheet" href="../libs/tabler-icons/tabler-icons.css" />
+	<link rel="stylesheet" href="./libs/ns-v2.css" />
+	<link href="./style.css" rel="stylesheet" type="text/css" />
 
-	<body data-ns-theme="dark">
-		<!-- <div id="preloader">
+	<title>NS-Core Configurator</title>
+</head>
+
+<body data-ns-theme="dark">
+	<!-- <div id="preloader">
 			<i id="loader" class="ti ti-loader-2"></i>
 			<h4 class="text-primary shadow-primary">Loading...</h4>
 		</div> -->
-		<div
-			id="mobileWarning"
-			class="w-100 h-100 bg-darker d-flex flex-col justify-center align-center"
-		>
-			<i class="ti ti-alert-triangle text-primary size-2 shadow-primary"></i>
-			<h4 class="text-primary shadow-primary">
-				The configurator is meant only for Desktop use.
-			</h4>
-			<a href="./index.html" class="btn">
-				<h3>Go back to the home page</h3>
-			</a>
-		</div>
-		<div class="main bg-grid scroll-y d-flex flex-col">
-			<div
-				class="header bg-dark-subtle blur-1 d-flex ps-5 pe-5 w-100 h-auto b1-bottom border-subtle"
-			>
-				<div class="d-flex justify-start gap-3 w-100 align-center">
-					<a href="./index.html" target="_self" class="text-primary pointer size-1"
-						>Nebula Studios Core</a
-					>
-					<div class="divider-vert"></div>
-					<h4 class="tab inactive pb-1">
-						<i class="ti ti-home"></i>
-						<a href="index.html">Home</a>
-					</h4>
-					<h4 class="tab active pb-1">
-						<i class="ti ti-settings-2"></i>
-						<a href="configurator.html">Configurator</a>
-					</h4>
-					<h4 class="btn text-subtle">
-						<i class="ti ti-book"></i>
-						<a
-							class="text-subtle"
-							href="https://docs.nebulastudios.software"
-							target="_blank"
-							>Documentation</a
-						>
-					</h4>
-				</div>
-				<div class="d-flex justify-end w-auto gap-3 align-center">
-					<i class="ti ti-brand-discord hover-body">
-						<a href="https://discord.nebulastudios.software" target="_blank"></a>
-					</i>
-					<i class="ti ti-brand-github hover-body">
-						<a href="https://github.com/Nebula-Studios-Software" target="_blank"></a>
-					</i>
-					<i class="ti ti-shopping-bag hover-body">
-						<a href="https://store.nebulastudios.software" target="_blank"></a>
-					</i>
-				</div>
+	<div id="mobileWarning" class="w-100 h-100 bg-darker d-flex flex-col justify-center align-center">
+		<i class="ti ti-alert-triangle text-primary size-2 shadow-primary"></i>
+		<h4 class="text-primary shadow-primary">
+			The configurator is meant only for Desktop use.
+		</h4>
+		<a href="./index.html" class="btn">
+			<h3>Go back to the home page</h3>
+		</a>
+	</div>
+	<div class="main bg-grid scroll-y d-flex flex-col">
+		<div class="header bg-dark-subtle blur-1 d-flex p-3 mb-5 w-100 h-auto b1-bottom border-subtle">
+			<div class="d-flex justify-start gap-3 w-100 align-center">
+				<a href="./index.html" target="_self" class="text-primary pointer size-1">Nebula Studios Core</a>
+				<div class="divider-vert"></div>
+				<h6 class="tab inactive pb-1">
+					<i class="ti ti-home"></i>
+					<a href="index.html">Home</a>
+				</h6>
+				<h6 class="tab active pb-1">
+					<i class="ti ti-settings-2"></i>
+					<a href="configurator.html">Configurator</a>
+				</h6>
 			</div>
-			<div class="container">
-				<div class="d-flex align-baseline gap-3">
-					<i class="ti ti-settings-2 size-2"></i>
-					<h3 class="me-2">Choose what to configure</h3>
-				</div>
-				<div class="content">
-					<div class="section">
-						<div class="form gap-2">
-							<div class="form-group">
-								<div id="config" class="b1 border-subtle p-3 hover d-flex">
-									<input
-										type="radio"
-										id="ItemsStarters"
-										name="config"
-										value="ItemsStarters"
-										checked
-									/>
-									<label for="ItemsStarters">Item Starter</label>
-									<input
-										type="radio"
-										id="PrimaryQuest"
-										name="config"
-										value="PrimaryQuest"
-									/>
-									<label for="PrimaryQuest">Quest</label>
-									<input type="radio" id="step" name="config" value="step" />
-									<label for="step">Quest Step</label>
-									<input type="radio" id="peds" name="config" value="peds" />
-									<label for="peds">Peds</label>
-								</div>
+			<div class="d-flex justify-end w-auto gap-3 align-center">
+				<h6 class="btn text-subtle w-100 d-flex justify-start align-baseline gap-2">
+					<i class="ti ti-book"></i>
+					<a class="text-subtle" href="https://docs.nebulastudios.software" target="_blank">Documentation</a>
+				</h6>
+				<i class="ti ti-brand-discord hover-body">
+					<a href="https://discord.nebulastudios.software" target="_blank"></a>
+				</i>
+				<i class="ti ti-brand-github hover-body">
+					<a href="https://github.com/Nebula-Studios-Software" target="_blank"></a>
+				</i>
+				<i class="ti ti-shopping-bag hover-body">
+					<a href="https://store.nebulastudios.software" target="_blank"></a>
+				</i>
+			</div>
+		</div>
+		<div class="container">
+			<h2 class="text-primary shadow-primary mb-3">
+				<i class="ti ti-settings-2"></i>
+				Select configurator
+			</h2>
+			<div class="content">
+				<div class="section">
+					<div class="form gap-2">
+						<div class="form-group">
+							<div id="config" class="b1 border-subtle p-3 hover d-flex">
+								<input type="radio" id="ItemsStarters" name="config" value="ItemsStarters" checked />
+								<label for="ItemsStarters">Item Starter</label>
+								<input type="radio" id="PrimaryQuest" name="config" value="PrimaryQuest" />
+								<label for="PrimaryQuest">Quest</label>
+								<input type="radio" id="step" name="config" value="step" />
+								<label for="step">Quest Step</label>
+								<input type="radio" id="peds" name="config" value="peds" />
+								<label for="peds">Peds</label>
 							</div>
-							<div class="form-group" id="formContainer"></div>
 						</div>
-						<h2 class="text-primary shadow-primary">
-							<i class="ti ti-code"></i>
-							Generated Code
-						</h2>
-						<div
-							id="codeContainer"
-							class="bg-transparent blur-1 b1 border-subtle mt-3 mb-6 p-3 rounded-5"
-						>
-							<i id="copyButton" class="ti ti-clipboard"></i>
-							<pre id="output"></pre>
-						</div>
+						<div class="form-group" id="formContainer"></div>
+					</div>
+					<h2 class="text-primary shadow-primary">
+						<i class="ti ti-code"></i>
+						Generated Code
+					</h2>
+					<div id="codeContainer" class="bg-transparent blur-1 b1 border-subtle mt-3 mb-6 p-3 rounded">
+						<i id="copyButton" class="ti ti-clipboard"></i>
+						<pre id="output"></pre>
 					</div>
 				</div>
 			</div>
-			<div
-				class="footer bg-dark-subtle blur-1 d-flex justify-center gap-3 align-baseline b1-top border-subtle"
-			>
-				<p class="text-primary">NS-Core Configurator</p>
-				<p class="text-body-subtle size-0">v.1.0.0</p>
-				<p class="text-body-subtle size-0">
-					© 2023 - 2024 Nebula Studios. All rights reserved.
-				</p>
-			</div>
 		</div>
-	</body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-lua.min.js"></script>
-	<script src="./configurator.js"></script>
+		<div class="footer bg-dark-subtle blur-1 d-flex justify-center gap-3 align-baseline b1-top border-subtle">
+			<p class="text-primary">NS-Core Configurator</p>
+			<p class="text-body-subtle size-0">v.1.0.0</p>
+			<p class="text-body-subtle size-0">
+				© 2023 - 2024 Nebula Studios. All rights reserved.
+			</p>
+		</div>
+	</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-lua.min.js"></script>
+<script src="./configurator.js"></script>
+
 </html>
