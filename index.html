@@ -7,7 +7,7 @@ Author: Nebula Studios (https://discord.gg/CsphJ7Wetz)
 The modification of this file is prohibited without explicit permission from Nebula Studios.
 Any unauthorized modification of this file will result in support being revoked.
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Last Modified: Thursday, 22nd February 2024 1:40:22 pm
+Last Modified: Thursday, 22nd February 2024 4:30:11 pm
 Modified By: MS Studios
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -23,7 +23,7 @@ Copyright 2023 - 2024, Nebula Studios
 <head>
 	<link rel="icon" href="./assets/default.ico" type="image/x-icon" />
 	<meta charset="UTF-8" />
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="viewport" content="width=1024">
 	<meta content="ie=edge" http-equiv="X-UA-Compatible" />
 
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -31,7 +31,8 @@ Copyright 2023 - 2024, Nebula Studios
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+	
 	<link rel="stylesheet" href="../libs/tabler-icons/tabler-icons.css" />
 	<link rel="stylesheet" href="./libs/ns-v2.css">
 	<link href="./style.css" rel="stylesheet" type="text/css" />
@@ -40,10 +41,10 @@ Copyright 2023 - 2024, Nebula Studios
 </head>
 
 <body data-ns-theme="dark">
-	<!-- <div id="preloader">
-		<i id="loader" class="ti ti-loader-2"></i>
+	<div id="preloader">
+		<i id="loader" class="ti ti-loader-2 shadow-text"></i>
 		<h4 class="text-primary shadow-primary">Loading...</h4>
-	</div> -->
+	</div>
 	<div class="main bg-grid scroll-y d-flex flex-col">
 		<nav class="navbar bg-dark-subtle blur-1 d-flex p-3 w-100 h-auto b1-bottom border-subtle">
 			<div class="d-flex justify-start w-100 align-center">
@@ -144,36 +145,36 @@ Copyright 2023 - 2024, Nebula Studios
 				</div>
 			</div>
 			<div class="divider"></div>
-			<h3 class="text-primary shadow-primary">Our commitment</h3>
+			<h3 class="text-primary shadow-primary bold">Our commitments</h3>
 			<div class="features-grid p-2">
 
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
-						<i class="ti ti-chevrons-up"></i>
+					<div class="ns-icon ns-icon-sm b1 border-primary shadow-primary rounded mb-3">
+						<i class="ti ti-writing"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Fully customizable</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-primary ps-3">
+						<h6 class="text-primary shadow-primary">Fully customizable</h6>
 						<p class="toggle-note">Customize anything you feel like!</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
-						<i class="ti ti-school"></i>
+					<div class="ns-icon ns-icon-sm b1 border-primary shadow-primary rounded mb-3">
+						<i class="ti ti-accessible"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Easy to use</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-primary ps-3">
+						<h6 class="text-primary shadow-primary">Easy to use</h6>
 						<p class="toggle-note">Whether you know coding or not, we got you covered</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
-						<i class="ti ti-brand-safari"></i>
+					<div class="ns-icon ns-icon-sm b1 border-primary shadow-primary rounded mb-3">
+						<i class="ti ti-brand-speedtest"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Performance & quality</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-primary ps-3">
+						<h6 class="text-primary shadow-primary">Performance & quality</h6>
 						<p class="toggle-note">Our resources are heavily tested and carefully refined regurarly</p>
 					</div>
 				</div>
@@ -181,31 +182,31 @@ Copyright 2023 - 2024, Nebula Studios
 				<!-- row 2 -->
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
-						<i class="ti ti-messages"></i>
+					<div class="ns-icon ns-icon-sm b1 border-primary shadow-primary rounded mb-3">
+						<i class="ti ti-language"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Translations</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-primary ps-3">
+						<h6 class="text-primary shadow-primary">Translations</h6>
 						<p class="toggle-note">Our resources can support any language</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+					<div class="ns-icon ns-icon-sm b1 border-primary shadow-primary rounded mb-3">
 						<i class="ti ti-user-shield"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Dedicated Support</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-primary ps-3">
+						<h6 class="text-primary shadow-primary">Dedicated Support</h6>
 						<p class="toggle-note">We always offer free dedicated support with every resource</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
-						<i class="ti ti-settings-2"></i>
+					<div class="ns-icon ns-icon-sm b1 border-primary shadow-primary rounded mb-3">
+						<i class="ti ti-shield-lock"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Exploit free</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-primary ps-3">
+						<h6 class="text-primary shadow-primary">Exploit free</h6>
 						<p class="toggle-note">Our resources comes with full proection against exploits</p>
 					</div>
 				</div>
@@ -215,37 +216,37 @@ Copyright 2023 - 2024, Nebula Studios
 			<div class="divider"></div>
 
 
-			<h3 class="text-primary shadow-primary">Features</h3>
+			<h3 class="text-info shadow-info bold">Features</h3>
 			<div class="features-grid rounded p-2">
 
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+					<div class="ns-icon ns-icon-sm b1 border-info shadow-info rounded mb-3">
 						<i class="ti ti-chevrons-up"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Create your level system</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-info ps-3">
+						<h6 class="text-info shadow-info">Create your level system</h6>
 						<p class="toggle-note">Entertain your players endlessly</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+					<div class="ns-icon ns-icon-sm b1 border-info shadow-info rounded mb-3">
 						<i class="ti ti-school"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Assign unique perks</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-info ps-3">
+						<h6 class="text-info shadow-info">Assign unique perks</h6>
 						<p class="toggle-note">Based on EXP to incentivize player progress Customize requirements,
 							effects images and descriptions</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+					<div class="ns-icon ns-icon-sm b1 border-info shadow-info rounded mb-3">
 						<i class="ti ti-brand-safari"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Offer unique quests</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-info ps-3">
+						<h6 class="text-info shadow-info">Offer unique quests</h6>
 						<p class="toggle-note">Customize PEDs, requirements, conditions and add as many steps you want
 						</p>
 					</div>
@@ -254,32 +255,32 @@ Copyright 2023 - 2024, Nebula Studios
 				<!-- row 2 -->
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+					<div class="ns-icon ns-icon-sm b1 border-info shadow-info rounded mb-3">
 						<i class="ti ti-messages"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Engagement features</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-info ps-3">
+						<h6 class="text-info shadow-info">Engagement features</h6>
 						<p class="toggle-note">Mention players, their jobs and much more in quest messages</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+					<div class="ns-icon ns-icon-sm b1 border-info shadow-info rounded mb-3">
 						<i class="ti ti-user-shield"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Admin Panel</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-info ps-3">
+						<h6 class="text-info shadow-info">Admin Panel</h6>
 						<p class="toggle-note">Manage quests directly in-game. <br> Monitor players infos, level, EXP
 							and perks</p>
 					</div>
 				</div>
 
 				<div class="features-grid-item">
-					<div class="ns-icon ns-icon-sm b1 border-body bg-border rounded mb-3">
+					<div class="ns-icon ns-icon-sm b1 border-info shadow-info rounded mb-3">
 						<i class="ti ti-settings-2"></i>
 					</div>
-					<div class="d-flex flex-col justify-center align-start gap-3">
-						<h6 class="text-body">Configurator</h6>
+					<div class="d-flex flex-col justify-center align-start gap-3 b1-left border-info ps-3">
+						<h6 class="text-info shadow-info">Configurator</h6>
 						<p class="toggle-note">Easily configure your quests and perks with our user-friendly
 							configurator</p>
 					</div>

@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Monday, 19th February 2024 7:11:08 pm
+ * Last Modified: Thursday, 22nd February 2024 4:40:00 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -39,6 +39,7 @@ $(document).ready(function () {
 		{
 			text: 'NS Core',
 			duration: 1,
+			delay: 1,
 		}
 	);
 
@@ -50,7 +51,37 @@ $(document).ready(function () {
 		{
 			opacity: 1,
 			duration: 1,
+			delay: 2,
+		}
+	);
+
+	gsap.fromTo(
+		'.features-grid-item *',
+		{
+			opacity: 0,
+			y: 100,
+		},
+		{
+			opacity: 1,
+			y: 0,
+			duration: 0.2,
 			delay: 1,
+			stagger: 0.1,
+			ease: "back.out(1.7)",
+		}
+	);
+
+	gsap.fromTo(
+		'.card',
+		{
+			opacity: 0,
+		},
+		{
+			opacity: 1,
+			duration: 0.5,
+			delay: 1,
+			stagger: 0.2,
+			ease: 'power2.out',
 		}
 	);
 

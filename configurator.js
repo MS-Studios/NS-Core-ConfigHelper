@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Tuesday, 20th February 2024 5:17:32 pm
+ * Last Modified: Thursday, 22nd February 2024 4:23:17 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -317,83 +317,75 @@ function render(selectedOption) {
 };
 
 $(document).ready(function () {
-	// check if the site is running on mobile or desktop (The configurator is not meant to be used on mobile, fuck everyone)
-	if (/Mobi/.test(navigator.userAgent)) {
-		$('#mobileWarning').show();
-		$('.main').hide();
-	} else {
-		$('#mobileWarning').hide();
-		$('.main').show();
-		initDefaults();
-		selectedOption = $('input[name="config"]:checked').val();
-		render(selectedOption);
-		$('#formContainer').html(formRows);
-		// gsap.fromTo(
-		// 	'#preloader',
-		// 	{
-		// 		opacity: 1
-		// 	},
-		// 	{
-		// 		opacity: 0,
-		// 		x: 0,
-		// 		duration: 1,
-		// 		delay: 1,
-		// 		ease: "power1.out",
-		// 		onComplete: function () {
-		// 			$('#preloader').hide()
-		// 		}
-		// 	}
-		// )
-		// gsap.fromTo(
-		// 	'.form-row',
-		// 	{
-		// 		opacity: 0,
-		// 		x: -500
-		// 	},
-		// 	{
-		// 		opacity: 1,
-		// 		x: 0,
-		// 		duration: 0.5,
-		// 		stagger: 0.1,
-		// 		ease: "power1.out",
-		// 	},
-		// );
-		$('input[name="config"]').on('change', function () {
-			initDefaults();
-			var selectedOption = $(this).val();
-			console.log(selectedOption)
-			render(selectedOption);
-
-			$('#formContainer').html(formRows);
-			gsap.fromTo(
-				'.form-row',
-				{
-					opacity: 0,
-					x: -500
-				},
-				{
-					opacity: 1,
-					x: 0,
-					duration: 0.5,
-					stagger: 0.1,
-					ease: "power1.out",
-				},
-			);
-		});
-		$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
-
-			updateTemplate(selectedOption)
-			let changedInput = $(this).attr('name');
-
-			if (changedInput === 'isMpModel') {
-				isMpModel = $(this).is(':checked');
-				render('peds');
-				$('#formContainer').html(formRows);
-				// Reimposta lo stato del checkbox dopo aver rigenerato il form
-				$('#isMpModel').prop('checked', isMpModel);
+	initDefaults();
+	selectedOption = $('input[name="config"]:checked').val();
+	render(selectedOption);
+	$('#formContainer').html(formRows);
+	gsap.fromTo(
+		'#preloader',
+		{
+			opacity: 1
+		},
+		{
+			opacity: 0,
+			x: 0,
+			duration: 1,
+			delay: 1,
+			ease: "power1.out",
+			onComplete: function () {
+				$('#preloader').hide()
 			}
-		});
-	};
+		}
+	)
+	gsap.fromTo(
+		'.form-row',
+		{
+			opacity: 0,
+			x: -500
+		},
+		{
+			opacity: 1,
+			x: 0,
+			duration: 0.5,
+			stagger: 0.1,
+			ease: "power1.out",
+		},
+	);
+	$('input[name="config"]').on('change', function () {
+		initDefaults();
+		var selectedOption = $(this).val();
+		console.log(selectedOption)
+		render(selectedOption);
+
+		$('#formContainer').html(formRows);
+		gsap.fromTo(
+			'.form-row',
+			{
+				opacity: 0,
+				x: -500
+			},
+			{
+				opacity: 1,
+				x: 0,
+				duration: 0.5,
+				stagger: 0.1,
+				ease: "power1.out",
+			},
+		);
+	});
+	$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
+
+		updateTemplate(selectedOption)
+		let changedInput = $(this).attr('name');
+
+		if (changedInput === 'isMpModel') {
+			isMpModel = $(this).is(':checked');
+			render('peds');
+			$('#formContainer').html(formRows);
+			// Reimposta lo stato del checkbox dopo aver rigenerato il form
+			$('#isMpModel').prop('checked', isMpModel);
+		}
+	});
 });
 
 function createItemsStartersTemplate(key, questToStart, mustRemove) {

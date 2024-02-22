@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 22nd February 2024 1:59:52 pm
+ * Last Modified: Thursday, 22nd February 2024 4:27:26 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -1256,6 +1256,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	z-index: 1000;
+	gap: 1rem;
 }
 
 #loader {
@@ -2442,6 +2443,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
+	max-width: 20vw;
 	height: var(--ns-card-height);
 	word-wrap: break-word;
 	background-color: var(--background-darker);
