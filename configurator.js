@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Monday, 26th February 2024 7:48:05 pm
+ * Last Modified: Monday, 26th February 2024 10:36:45 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -264,7 +264,6 @@ function render(selectedOption) {
 				formRows = [
 					createFormRow('Ped ID', 'pedId', 'pedId', 'Type the Ped ID', 'The ID of the ped that will give the quest'),
 					createCheckboxRow('Is MP Model?', 'isMpModel', 'isMpModel', 'Toggle if the ped is a MP Model'),
-					createNumberInputRow('Ped Type', 'pedType', 'pedType', 'Type the Ped Type', 'The type of the ped', 'https://docs.fivem.net/natives/?_0xFF059E1E4C01E63C'),
 					createFormRow('Ped Model', 'pedModel', 'pedModel', 'Type the Ped Model', 'The model of the ped', 'https://docs.fivem.net/docs/game-references/ped-models/'),
 					createFormRow('Coords', 'pedCoords', 'pedCoords', 'Ex. vector3(-1046.6208, 4909.0034, 209.2752)', 'The coordinates of the ped'),
 					createNumberInputRow('Ped Heading', 'pedHeading', 'pedHeading', 'Type the Ped Heading', 'The heading of the ped'),
@@ -582,7 +581,7 @@ function createPedTemplate(pedId, isMpModel, pedType, pedModel, pedCoords, pedHe
 		return `
 		[${pedId}] = { --! Ped ID (must be unique)
 			isMpModel = ${isMpModel}, --! Toggle if the ped is a MP Model
-			pedType = ${pedType}, --! The type of the ped // https://runtime.fivem.net/doc/natives/?_0x6C9DD2D0499A4446
+			pedType = 4, --! The type of the ped // https://runtime.fivem.net/doc/natives/?_0x6C9DD2D0499A4446
 			pedModel = ${pedModel}, --! The model of the ped // https://docs.fivem.net/docs/game-references/ped-models/
 			pedCoords = ${pedCoords}, --! The coordinates of the ped
 			pedHeading = ${pedHeading}, --! The heading of the ped
@@ -646,7 +645,7 @@ function updateTemplate(selectedOption) {
 			break;
 		case 'step':
 
-			coords = getValue('coords', '"WARNING: NO COORDS"');
+			coords = getValue('coords', '"WARNING: NO COORDS"', false);
 			message = getValue('message', '"WARNING: NO MESSAGE"');
 			title = getValue('title', 'nil');
 			completeMessage = getValue('completeMessage', 'nil');
@@ -662,7 +661,7 @@ function updateTemplate(selectedOption) {
 			isMpModel = getValue('isMpModel', false, false);
 			pedType = getValue('pedType', 0, false);
 			pedModel = getValue('pedModel', 'nil');
-			pedCoords = getValue('pedCoords', 'nil');
+			pedCoords = getValue('pedCoords', '"WARNING: NO COORDS"', false);
 			pedHeading = getValue('pedHeading', 0, false);
 			pedName = getValue('pedName', 'nil');
 			questLabel = getValue('questLabel', 'nil');
