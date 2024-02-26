@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 22nd February 2024 4:27:26 pm
+ * Last Modified: Monday, 26th February 2024 7:45:57 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -2452,6 +2452,10 @@ a {
 	border-radius: var(--ns-card-border-radius);
 }
 
+.card-fluid {
+	max-width: 100%;
+}
+
 .card:hover {
 	filter: var(--drop-shadow);
 	border: 1px solid var(--text-subtle);
@@ -2969,4 +2973,220 @@ a {
 
 ::-webkit-scrollbar-button {
 	display: none;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 40px !important;
+	height: 20px;
+	border: none !important;
+	margin: 0 1rem !important;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--background-darker);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border: 1px solid var(--primary);
+}
+
+.slider:before {
+	position: absolute;
+	content: '';
+	height: 10px;
+	width: 10px;
+	left: 4px;
+	bottom: 4px;
+	background-color: var(--text-subtle);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+input:checked + .slider {
+	background-color: var(--primary-subtle);
+}
+
+input:checked + .slider:before {
+	filter: var(--drop-shadow-primary);
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(20px);
+	background-color: var(--text);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+textarea {
+	width: 100%;
+	height: auto;
+	resize: none;
+	border-radius: 5px;
+	border: 2px solid var(--border) !important;
+	padding: 10px;
+	background-color: var(--background-darker);
+	font-family: var(--nebula-font);
+	color: var(--text-subtle);
+	overflow: visible;
+	resize: vertical;
+}
+
+textarea:focus {
+	outline: none;
+	color: var(--text);
+}
+
+input[type='text'] {
+	border-radius: 5px;
+	border: 2px solid var(--border);
+	padding: 10px;
+	background-color: var(--background-darker);
+	font-family: var(--nebula-font);
+	color: var(--text-subtle);
+	width: 100%;
+}
+
+input[type='text']:focus {
+	outline: none;
+	color: var(--text);
+	border: 2px solid var(--primary) !important;
+}
+
+input[type='number'] {
+	border-radius: 5px;
+	border: 2px solid var(--border);
+	padding: 10px;
+	background-color: var(--background-darker);
+	font-family: var(--nebula-font);
+	color: var(--text-subtle);
+	width: 100%;
+}
+
+input[type='number']:hover {
+	outline: none;
+	color: var(--text);
+	border: 2px solid var(--primary) !important;
+	filter: var(--drop-shadow-primary);
+}
+
+input[type='number']:focus {
+	outline: none;
+	color: var(--text);
+	border: 2px solid var(--primary) !important;
+	filter: var(--drop-shadow-primary);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+.tag {
+	--ns-tag-radius: 0.25rem 0 0 0.25rem;
+	display: flex;
+	align-items: center;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--text-subtle);
+	text-align: center;
+	white-space: nowrap;
+	background-color: var(--background);
+	border-top: var(--ns-border-width) solid var(--border-subtle);
+	border-left: var(--ns-border-width) solid var(--border-subtle);
+	border-bottom: var(--ns-border-width) solid var(--border-subtle);
+	border-radius: var(--ns-tag-radius);
+}
+
+.tag-primary {
+	border-top: var(--ns-border-width) solid var(--primary-subtle);
+	border-left: var(--ns-border-width) solid var(--primary-subtle);
+	border-bottom: var(--ns-border-width) solid var(--primary-subtle);
+	background-color: var(--primary-subtle);
+}
+
+.tag-warning {
+	border-top: var(--ns-border-width) solid var(--warning-subtle);
+	border-left: var(--ns-border-width) solid var(--warning-subtle);
+	border-bottom: var(--ns-border-width) solid var(--warning-subtle);
+	background-color: var(--warning-subtle);
+}
+
+.tag-danger {
+	border-top: var(--ns-border-width) solid var(--danger-subtle);
+	border-left: var(--ns-border-width) solid var(--danger-subtle);
+	border-bottom: var(--ns-border-width) solid var(--danger-subtle);
+	background-color: var(--danger-subtle);
+}
+
+.tag-success {
+	border-top: var(--ns-border-width) solid var(--success-subtle);
+	border-left: var(--ns-border-width) solid var(--success-subtle);
+	border-bottom: var(--ns-border-width) solid var(--success-subtle);
+	background-color: var(--success-subtle);
+}
+
+.tag-info {
+	border-top: var(--ns-border-width) solid var(--info-subtle);
+	border-left: var(--ns-border-width) solid var(--info-subtle);
+	border-bottom: var(--ns-border-width) solid var(--info-subtle);
+	background-color: var(--info-subtle);
+}
+
+.tag-violet {
+	border-top: var(--ns-border-width) solid var(--violet-subtle);
+	border-left: var(--ns-border-width) solid var(--violet-subtle);
+	border-bottom: var(--ns-border-width) solid var(--violet-subtle);
+	background-color: var(--violet-subtle);
+}
+
+.tag-text {
+	--ns-tag-text-radius: 0 0.25rem 0.25rem 0;
+	border-top: var(--ns-border-width) solid var(--border);
+	border-right: var(--ns-border-width) solid var(--border);
+	border-bottom: var(--ns-border-width) solid var(--border);
+	border-radius: var(--ns-tag-text-radius);
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--text);
+	text-align: center;
+	white-space: nowrap;
+}
+
+.tag-group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+}
+
+.disabled {
+	pointer-events: none;
+	opacity: 0.5;
 }

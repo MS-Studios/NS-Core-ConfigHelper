@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 22nd February 2024 4:40:00 pm
+ * Last Modified: Sunday, 25th February 2024 4:31:09 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -55,52 +55,80 @@ $(document).ready(function () {
 		}
 	);
 
-	gsap.fromTo(
-		'.features-grid-item *',
-		{
-			opacity: 0,
-			y: 100,
-		},
-		{
-			opacity: 1,
-			y: 0,
-			duration: 0.2,
-			delay: 1,
-			stagger: 0.1,
-			ease: "back.out(1.7)",
-		}
-	);
+	// gsap.fromTo(
+	// 	'.features-grid-item *',
+	// 	{
+	// 		opacity: 0,
+	// 		y: 100,
+	// 	},
+	// 	{
+	// 		opacity: 1,
+	// 		y: 0,
+	// 		duration: 0.2,
+	// 		delay: 1,
+	// 		stagger: 0.1,
+	// 		ease: "back.out(1.7)",
+	// 	}
+	// );
 
-	gsap.fromTo(
-		'.card',
-		{
-			opacity: 0,
-		},
-		{
-			opacity: 1,
-			duration: 0.5,
-			delay: 1,
-			stagger: 0.2,
-			ease: 'power2.out',
-		}
-	);
+	// gsap.fromTo(
+	// 	'.card',
+	// 	{
+	// 		opacity: 0,
+	// 	},
+	// 	{
+	// 		opacity: 1,
+	// 		duration: 0.5,
+	// 		delay: 1,
+	// 		stagger: 0.2,
+	// 		ease: 'power2.out',
+	// 	}
+	// );
 
-	// Smooth scroll
-	$('a').on('click', function (event) {
-		if (this.hash !== '') {
-			event.preventDefault();
+	// Ottieni tutti i link della navbar
+	let navLinks = $('.nav-link');
+	// Nascondi tutte le schede
+	let tabs = $('.card-body-item');
+	tabs.hide();
+	// Aggiungi un event listener per ogni link
+	navLinks.on('click', function(e) {
+		// Prevenire il comportamento di default del link
+		e.preventDefault();
 
-			var hash = this.hash;
+		// Rimuovi la classe 'active' da tutti i link
+		navLinks.removeClass('active');
 
-			$('html, body').animate(
-				{
-					scrollTop: $(hash).offset().top,
-				},
-				800,
-				function () {
-					window.location.hash = hash;
-				}
-			);
+		// Aggiungi la classe 'active' al link cliccato
+		$(this).addClass('active');
+
+		tabs.hide();
+
+		// Mostra la scheda corrispondente al link cliccato
+		let targetTab = $(`.card-body-item[data-tab="${$(this).attr('href').substring(1)}"]`);
+		if (targetTab) targetTab.show();
+	});
+
+	// Mostra la prima scheda all'avvio
+	$('.card-body-item').first().show();
+
+	// Ottieni tutti i bottoni dell'accordion
+	let accordionButtons = $('.accordion-button');
+
+	// Aggiungi un event listener per ogni bottone
+	accordionButtons.on('click', function() {
+		// Trova l'elemento collapse corrispondente
+		let collapseElementId = $(this).data('bs-target');
+		let collapseElement = $(collapseElementId);
+
+		// Se l'elemento collapse è già mostrato, nascondilo
+		if (collapseElement.hasClass('show')) {
+			collapseElement.removeClass('show');
+		} else {
+			// Altrimenti, nascondi tutti gli elementi collapse
+			$('.accordion-collapse').removeClass('show');
+
+			// E mostra l'elemento collapse corrispondente
+			collapseElement.addClass('show');
 		}
 	});
 });

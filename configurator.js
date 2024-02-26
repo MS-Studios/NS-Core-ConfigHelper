@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 22nd February 2024 4:23:17 pm
+ * Last Modified: Monday, 26th February 2024 7:48:05 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -135,7 +135,7 @@ function createNumberInputRow(labelText, inputId, inputName, placeholderText, no
 			<label for="${inputId}">${labelText}</label>
 			<i class="ti ti-chevron-right p-3"></i>
 			<div class="input-group">
-				<input class="hover" type="number" id="${inputId}" name="${inputName}" autocomplete="off" value="0" placeholder="${placeholderText}" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+				<input class="hover" type="number" id="${inputId}" name="${inputName}" autocomplete="off" value="0" min="0" placeholder="${placeholderText}" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
 				<div class="input-group-append">
 					<i class="ti ti-question-mark"></i>
 					<p class="note">${noteText}</p>
@@ -171,7 +171,7 @@ function createRowPlusCheckbox(labelText, inputId, inputName, placeholderText, n
 			<label for="${checkboxId}">${labelText}</label>
 			<i class="ti ti-chevron-right p-3"></i>
 			<div class="input-group">
-				<div class="d-flex flex-row align-center justify-start">
+				<div class="d-flex flex-row align-center justify-start mb-2">
 				<p class="toggle-note">Server</p>
 				<label class="switch">
 					<input type="checkbox" id="${checkboxId}" name="${checkboxName}">
@@ -197,12 +197,12 @@ function createDoubleNumberInputRow(labelText, input1Id, input1Name, placeholder
 			<label for="${input1Id}">${labelText}</label>
 			<i class="ti ti-chevron-right p-3"></i>
 			<div class="input-group">
-				<input class="hover" type="number" id="${input1Id}" name="${input1Name}" autocomplete="off" value="0" placeholder="${placeholder1Text}" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+				<input class="hover" type="number" id="${input1Id}" name="${input1Name}" autocomplete="off" value="0" min="0" placeholder="${placeholder1Text}" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
 				<div class="input-group-append">
 					<i class="ti ti-question-mark"></i>
 					<p class="note">${note1Text}</p>
 				</div>
-				<input class="hover" type="number" id="${input2Id}" name="${input2Name}" autocomplete="off" value="0" placeholder="${placeholder2Text}" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+				<input class="hover" type="number" id="${input2Id}" name="${input2Name}" autocomplete="off" value="0" min="0" placeholder="${placeholder2Text}" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
 				<div class="input-group-append">
 					<i class="ti ti-question-mark"></i>
 					<p class="note">${note2Text}</p>
@@ -318,7 +318,7 @@ function render(selectedOption) {
 
 $(document).ready(function () {
 	initDefaults();
-	selectedOption = $('input[name="config"]:checked').val();
+	let selectedOption = $('input[name="config"]:checked').val();
 	render(selectedOption);
 	$('#formContainer').html(formRows);
 	gsap.fromTo(
@@ -353,8 +353,7 @@ $(document).ready(function () {
 	);
 	$('input[name="config"]').on('change', function () {
 		initDefaults();
-		var selectedOption = $(this).val();
-		console.log(selectedOption)
+		selectedOption = $(this).val();
 		render(selectedOption);
 
 		$('#formContainer').html(formRows);
@@ -374,7 +373,7 @@ $(document).ready(function () {
 		);
 	});
 	$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
-
+		console.log(selectedOption)
 		updateTemplate(selectedOption)
 		let changedInput = $(this).attr('name');
 
