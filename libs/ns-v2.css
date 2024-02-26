@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Monday, 26th February 2024 7:45:57 pm
+ * Last Modified: Monday, 26th February 2024 10:42:12 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -205,9 +205,7 @@
 
 .hover-body:hover {
 	transform: translateY(-5px);
-	border: 2px solid var(--text);
 	filter: drop-shadow(0px 0px 10px var(--text));
-	background-color: var(--background-subtle);
 	cursor: pointer;
 }
 

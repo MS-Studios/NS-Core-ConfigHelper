@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Sunday, 25th February 2024 4:31:09 pm
+ * Last Modified: Monday, 26th February 2024 10:44:47 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -55,35 +55,35 @@ $(document).ready(function () {
 		}
 	);
 
-	// gsap.fromTo(
-	// 	'.features-grid-item *',
-	// 	{
-	// 		opacity: 0,
-	// 		y: 100,
-	// 	},
-	// 	{
-	// 		opacity: 1,
-	// 		y: 0,
-	// 		duration: 0.2,
-	// 		delay: 1,
-	// 		stagger: 0.1,
-	// 		ease: "back.out(1.7)",
-	// 	}
-	// );
+	gsap.fromTo(
+		'.features-grid-item *',
+		{
+			opacity: 0,
+			y: 100,
+		},
+		{
+			opacity: 1,
+			y: 0,
+			duration: 0.2,
+			delay: 1,
+			stagger: 0.1,
+			ease: "back.out(1.7)",
+		}
+	);
 
-	// gsap.fromTo(
-	// 	'.card',
-	// 	{
-	// 		opacity: 0,
-	// 	},
-	// 	{
-	// 		opacity: 1,
-	// 		duration: 0.5,
-	// 		delay: 1,
-	// 		stagger: 0.2,
-	// 		ease: 'power2.out',
-	// 	}
-	// );
+	gsap.fromTo(
+		'.card',
+		{
+			opacity: 0,
+		},
+		{
+			opacity: 1,
+			duration: 0.5,
+			delay: 1,
+			stagger: 0.2,
+			ease: 'power2.out',
+		}
+	);
 
 	// Ottieni tutti i link della navbar
 	let navLinks = $('.nav-link');
