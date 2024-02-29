@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Monday, 26th February 2024 10:44:47 pm
+ * Last Modified: Thursday, 29th February 2024 1:57:42 am
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -84,52 +84,90 @@ $(document).ready(function () {
 			ease: 'power2.out',
 		}
 	);
-
-	// Ottieni tutti i link della navbar
-	let navLinks = $('.nav-link');
-	// Nascondi tutte le schede
-	let tabs = $('.card-body-item');
-	tabs.hide();
-	// Aggiungi un event listener per ogni link
-	navLinks.on('click', function(e) {
-		// Prevenire il comportamento di default del link
-		e.preventDefault();
-
-		// Rimuovi la classe 'active' da tutti i link
-		navLinks.removeClass('active');
-
-		// Aggiungi la classe 'active' al link cliccato
-		$(this).addClass('active');
-
-		tabs.hide();
-
-		// Mostra la scheda corrispondente al link cliccato
-		let targetTab = $(`.card-body-item[data-tab="${$(this).attr('href').substring(1)}"]`);
-		if (targetTab) targetTab.show();
+	// Random background quote
+	bgRandomQuote();
+	setInterval(bgRandomQuote, 5000);
 	});
 
-	// Mostra la prima scheda all'avvio
-	$('.card-body-item').first().show();
 
-	// Ottieni tutti i bottoni dell'accordion
-	let accordionButtons = $('.accordion-button');
+function showNotification(message, type, time) {
 
-	// Aggiungi un event listener per ogni bottone
-	accordionButtons.on('click', function() {
-		// Trova l'elemento collapse corrispondente
-		let collapseElementId = $(this).data('bs-target');
-		let collapseElement = $(collapseElementId);
+	$('.notification').remove();
 
-		// Se l'elemento collapse è già mostrato, nascondilo
-		if (collapseElement.hasClass('show')) {
-			collapseElement.removeClass('show');
-		} else {
-			// Altrimenti, nascondi tutti gli elementi collapse
-			$('.accordion-collapse').removeClass('show');
+	const bgTypes = {
+		'success': 'bg-success shadow-success',
+		'error': 'bg-danger shadow-danger',
+		'warning': 'bg-warning shadow-warning',
+		'info': 'bg-info shadow-info',
+		'violet': 'bg-violet shadow-violet',
+	};
 
-			// E mostra l'elemento collapse corrispondente
-			collapseElement.addClass('show');
-		}
-	});
-});
+	const textTypes = {
+		'success': 'text-success',
+		'error': 'text-danger',
+		'warning': 'text-warning',
+		'info': 'text-info',
+		'violet': 'text-violet',
+	};
 
+	const iconTypes = {
+		'success': 'ti-check',
+		'error': 'ti-exclamation-circle',
+		'warning': 'ti-alert-circle',
+		'info': 'ti-info-circle',
+		'violet': 'ti-check',
+	};
+
+	const notification = `
+		<div class="notification">
+			<div class="notification-content">
+				<div class="notification-progress"></div>
+				<i class="ti ti-alert-circle notification-icon"></i>
+				<p class="notification-message toggle-note">This is a notification</p>
+			</div>
+		</div>
+	`;
+
+	$('.notification-container').append(notification);
+
+	$('.notification').fadeIn(250);
+
+	$('.notification-message').html(message.replace(/\n/g, '<br/>'));
+	$('.notification-icon').addClass(iconTypes[type]).addClass(textTypes[type]);
+	$('.notification-progress').addClass(bgTypes[type]);
+
+	$('.notification-progress').animate({
+		width: '0%'
+	}, time, 'linear');
+
+	setTimeout(() => {
+		$('.notification').fadeOut(250);
+	}, time);
+}
+
+function bgRandomQuote() {
+	const quotes = [
+			'Create a level system with customizable experience requirements',
+			'Assign unique perks to each level to incentivize player progress',
+			'Unlimited quests and achievements to keep players engaged',
+			'Total control over the script and the ability to customize it to your liking',
+			'Levels, perks, quests – the building blocks of your unique RP world',
+			'Don\'t just play the game, design it',
+		],
+
+		randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+		gsap.to('.quote', {
+			duration: 1,
+			text: "⠀",
+			onComplete: () => {
+				gsap.to('.quote', {
+					text: {
+						value: randomQuote,
+						duration: 1,
+					},
+					duration: 1,
+				});
+			},
+		});
+}
