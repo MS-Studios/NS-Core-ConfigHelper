@@ -7,7 +7,7 @@ Author: Nebula Studios (https://discord.nebulastudios.software)
 The modification of this file is prohibited without explicit permission from Nebula Studios.
 Any unauthorized modification of this file will result in support being revoked.
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Last Modified: Thursday, 29th February 2024 1:40:27 am
+Last Modified: Thursday, 29th February 2024 10:16:02 pm
 Modified By: MS Studios
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -43,13 +43,13 @@ Copyright 2023 - 2024, Nebula Studios
 
 <body data-ns-theme="dark">
 	<div class="notification-container bottom-right z-9999"></div>
-	<div id="preloader">
+	<!-- <div id="preloader">
 		<i id="loader" class="ti ti-loader-2 shadow-text"></i>
 		<h4 class="text-primary shadow-primary">Loading...</h4>
-	</div>
+	</div> -->
 	<div class="main bg-grid scroll-y d-flex flex-col">
 		<nav
-			class="float-navbar sticky bg-dark-subtle blur-1 d-flex gap-5 blur-10 p-3 w-fit h-auto b1 border-subtle justify-between rounded">
+			class="float-navbar sticky bg-dark-subtle blur-1 d-flex gap-5 blur-10 p-3 w-fit h-auto b1 border-subtle justify-between rounded z-1">
 			<a class="d-flex align-center" href="./index.html">
 				<span class="b1 border-subtle shadow rounded ns-icon ns-icon-md p-1 me-3">
 					<img class="img-fluid" src="./assets/default.ico" alt="NS Core" />
@@ -82,38 +82,46 @@ Copyright 2023 - 2024, Nebula Studios
 				</a>
 			</div>
 		</nav>
-		<div class="container mt-5">
-			<h2 class="text-primary shadow-primary mb-3">
-				<i class="ti ti-settings-2"></i>
-				Select configurator
-			</h2>
-			<div class="content">
+		<div class="container mt-5 mb-5">
+			<div class="content d-flex">
+				<div id="config" class="d-flex flex-col w-fit me-5">
+					<ul class="navbar-nav">
+						<h6 class="text-primary shadow-primary mb-3">
+							<i class="ti ti-settings-2"></i>
+							Select configurator
+						</h6>
+						<a class="nav-item active" id="ItemsStarters" href="#">
+							<p class="nav-link">
+								<i class="ti ti-package"></i>
+								Item Starter</p>
+						</a>
+						<a class="nav-item" id="PrimaryQuest" href="#">
+							<p class="nav-link">
+								<i class="ti ti-book"></i>
+								Quest</p>
+						</a>
+						<a class="nav-item" id="step" href="#">
+							<p class="nav-link">
+								<i class="ti ti-bookmark"></i>
+								Quest Step</p>
+						</a>
+						<a class="nav-item" id="peds" href="#">
+							<p class="nav-link">
+								<i class="ti ti-user"></i>
+								Peds</p>
+						</a>
+					</ul>
+				</div>
 				<div class="section">
 					<div class="form gap-2">
-						<div class="form-group">
-							<div id="config" class="b1 border-subtle p-3 hover d-flex">
-								<input type="radio" id="ItemsStarters" name="config" value="ItemsStarters" checked />
-								<label for="ItemsStarters">Item Starter</label>
-								<input type="radio" id="PrimaryQuest" name="config" value="PrimaryQuest" />
-								<label for="PrimaryQuest">Quest</label>
-								<input type="radio" id="step" name="config" value="step" />
-								<label for="step">Quest Step</label>
-								<input type="radio" id="peds" name="config" value="peds" />
-								<label for="peds">Peds</label>
-							</div>
-						</div>
 						<div class="form-group" id="formContainer"></div>
-					</div>
-					<h2 class="text-primary shadow-primary">
-						<i class="ti ti-code"></i>
-						Generated Code
-					</h2>
-					<div id="codeContainer" class="bg-transparent blur-1 b1 border-subtle mt-3 mb-6 p-3 rounded">
-						<i id="copyButton" class="ti ti-clipboard"></i>
-						<pre id="output"></pre>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="btn btn-violet absolute bottom-right z-2 mb-5" id="showCode">
+			<i class="ti ti-code"></i>
+			Show Code
 		</div>
 		<div class="footer mt-5 p-3 bg-dark-subtle blur-1 d-flex justify-center gap-3 align-baseline b1-top border-subtle">
 			<p class="toggle-note">v.1.0.0</p>
@@ -122,6 +130,10 @@ Copyright 2023 - 2024, Nebula Studios
 			</p>
 		</div>
 	</div>
+	<aside id="codeContainer" class="bg-transparent blur-1 rounded w-auto me-3 z-1">
+		<i id="copyButton" class="ti ti-clipboard"></i>
+		<pre id="output"></pre>
+	</aside>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-lua.min.js"></script>

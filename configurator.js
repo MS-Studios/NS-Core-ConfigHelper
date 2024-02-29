@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 29th February 2024 4:51:10 pm
+ * Last Modified: Thursday, 29th February 2024 10:08:46 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -46,7 +46,9 @@ let defaults = {
 	removeItem: 'nil',
 	stepEvent: 'nil',
 	isMpModel: false,
-	template: ''
+	template: '',
+	useBlip: false,
+	useStepBlip: false,
 };
 
 function initDefaults() {
@@ -63,6 +65,9 @@ function initDefaults() {
 	$('#completeEventType').prop('checked', defaults.completedEvent !== '');
 	$('#gui').prop('checked', defaults.gui);
 	$('#stepEventType').prop('checked', defaults.stepEvent !== 'nil');
+	$('#isMpModel').prop('checked', defaults.isMpModel);
+	$('#useBlip').prop('checked', defaults.useBlip);
+	$('#useStepBlip').prop('checked', defaults.useStepBlip);
 }
 
 function createFormRow(labelText, inputId, inputName, placeholderText, noteText, link = '', linkText = 'Reference') {
@@ -226,34 +231,35 @@ function render(selectedOption) {
 		case 'PrimaryQuest':
 			formRows = [
 				createFormRow('Quest Name', 'key', 'key', 'Type the Quest ID', 'It must be unique'),
-				// createCheckboxRow('Is enabled?', 'isActive', 'isActive', 'Toggle if the quest is available'),
-				// createCheckboxRow('Is completed?', 'isCompleted', 'isCompleted', 'Toggle if the quest is completed by default'),
-				// createNumberInputRow('Starting step', 'currentStep', 'currentStep', 'Default is 0', 'Starting step of the Quest'),
 				createFormRow('Quest dependency', 'quest_depend', 'quest_depend', 'Type the Quest ID / leave blank', 'The quest that must be completed before this quest can be started'),
 				createFormRow('Quest unrequire', 'quest_unrequire', 'quest_unrequire', 'Type the Quest ID / leave blank', 'The quest that will be unrequired after this quest is completed'),
 				createFormRow('Quest to give after', 'quest_give_after', 'quest_give_after', 'Type the Quest ID / leave blank', 'The quest that will be given after this quest is completed'),
 				createFormRow('Required item', 'items_require', 'items_require', 'Type the Item ID / leave blank', 'The item that will be required to start the quest'),
 				createNumberInputRow('Level requirement', 'level_require', 'level_require', 'Type 0 to set always available', 'The level required to start the quest'),
-				// createCheckboxRow('Is stopped?', 'isStopped', 'isStopped', 'Toggle to prevent the start of the quest by default (useful if you use custom events)'),
 				createFormRow('Label', 'label', 'label', 'Type the Quest Name', 'The name of the quest that will be visible to the players'),
 				createFormRow('Description', 'description', 'description', 'A short description of the Quest', 'The description of the quest that will be visible to the players in the Main Interface'),
 				createNumberInputRow('EXP Reward', 'expReward', 'expReward', 'Type the EXP Amount', 'The amount of EXP to reward the player with'),
 				createFormRow('Zone', 'zone', 'zone', '', 'The zone where the quest will be available to start | NS-Medic required'),
 				createRowPlusCheckbox('Starting Event', 'startEvent', 'startEvent', 'Type the event name', 'The event that will be triggered when the quest is started', 'startingEventType', 'startingEventType', 'Starting Event Type'),
 				createRowPlusCheckbox('Completed Event', 'completedEvent', 'completedEvent', 'Type the event name', 'The event that will be triggered when the quest is completed', 'completeEventType', 'completeEventType', 'Completed Event Type'),
-				createCheckboxRow('Use Blip?', 'useBlip', 'useBlip', 'Toggle if the quest uses a blip'),
-				createFormRow('Blip Type', 'blipType', 'blipType', 'Type the Blip Type', 'The type of the blip // normal or area'),
-				createFormRow('Blip Coords', 'blipCoords', 'blipCoords', 'Ex. vector3(-1046.6208, 4909.0034, 209.2752)', 'The coordinates of the blip // https://docs.fivem.net/docs/game-references/blips/'),
-				createNumberInputRow('Blip Sprite', 'blipSprite', 'blipSprite', 'Type the Blip Sprite', 'The sprite of the blip'),
-				createNumberInputRow('Blip Display', 'blipDisplay', 'blipDisplay', 'Type the Blip Display', 'The display of the blip'),
-				createNumberInputRow('Blip Color', 'blipColor', 'blipColor', 'Type the Blip Color', 'The color of the blip'),
-				createNumberInputRow('Blip Alpha', 'blipAlpha', 'blipAlpha', 'Type the Blip Alpha', 'The alpha of the blip'),
-				createNumberInputRow('Blip Scale', 'blipScale', 'blipScale', 'Type the Blip Scale', 'The scale of the blip'),
-				createNumberInputRow('Blip Radius', 'blipRadius', 'blipRadius', 'Type the Blip Radius', 'The radius of the blip // Only for area blips'),
-				createCheckboxRow('Blip Short Range', 'blipShortRange', 'blipShortRange', 'Toggle if the blip is short range // Visible only when close to the blip and not on the minimap'),
-				createFormRow('Blip Label', 'blipLabel', 'blipLabel', 'Type the Blip Label', 'The label of the blip')
-
+				createCheckboxRow('Use Blip?', 'useBlip', 'useBlip', 'Toggle if the quest uses a blip')
 			].join('');
+
+			if (useBlip) {
+				formRows += [
+					createFormRow('Blip Type', 'blipType', 'blipType', 'Type the Blip Type', 'The type of the blip // normal or area'),
+					createFormRow('Blip Coords', 'blipCoords', 'blipCoords', 'Ex. vector3(-1046.6208, 4909.0034, 209.2752)', 'The coordinates of the blip // https://docs.fivem.net/docs/game-references/blips/'),
+					createNumberInputRow('Blip Sprite', 'blipSprite', 'blipSprite', 'Type the Blip Sprite', 'The sprite of the blip'),
+					createNumberInputRow('Blip Display', 'blipDisplay', 'blipDisplay', 'Type the Blip Display', 'The display of the blip'),
+					createNumberInputRow('Blip Color', 'blipColor', 'blipColor', 'Type the Blip Color', 'The color of the blip'),
+					createNumberInputRow('Blip Alpha', 'blipAlpha', 'blipAlpha', 'Type the Blip Alpha', 'The alpha of the blip'),
+					createNumberInputRow('Blip Scale', 'blipScale', 'blipScale', 'Type the Blip Scale', 'The scale of the blip'),
+					createNumberInputRow('Blip Radius', 'blipRadius', 'blipRadius', 'Type the Blip Radius', 'The radius of the blip // Only for area blips'),
+					createCheckboxRow('Blip Short Range', 'blipShortRange', 'blipShortRange', 'Toggle if the blip is short range // Visible only when close to the blip and not on the minimap'),
+					createFormRow('Blip Label', 'blipLabel', 'blipLabel', 'Type the Blip Label', 'The label of the blip')
+				].join('');
+			}
+
 			updateTemplate(selectedOption);
 			break;
 		case 'step':
@@ -264,15 +270,28 @@ function render(selectedOption) {
 				createFormRow('Title', 'title', 'title', 'Type a short title', 'The title that will be displayed in the GUI (if active) when the step is completed'),
 				createTextAreaRow('Message', 'completeMessage', 'completeMessage', 'Type the text you want to show when the step is completed', 'The message that will be displayed in the GUI (if active) when the step is completed'),
 				createNumberInputRow('Distance', 'distance', 'distance', 'Type the desidered distance', 'The distance from the coordinates where the step will be completed'),
-				// createFormRow('Reward Item(s)', 'itemReward', 'itemReward', '', 'The item that will be given to the player when the step is completed'),
-				// createFormRow('Remove Item(s)', 'removeItem', 'removeItem', '', 'The item(s) that will be removed from the player\'s inventory when the step is completed'),
 				createNumberInputRow('EXP Reward', 'expReward', 'expReward', 'Type the EXP Amount', 'The amount of EXP to reward the player with when the step is completed'),
-				createRowPlusCheckbox('Step Event', 'stepEvent', 'stepEvent', 'Type the event name', 'The event that will be triggered when the step is completed', 'stepEventType', 'stepEventType', 'Step Event Type')
+				createRowPlusCheckbox('Step Event', 'stepEvent', 'stepEvent', 'Type the event name', 'The event that will be triggered when the step is completed', 'stepEventType', 'stepEventType', 'Step Event Type'),
+				createCheckboxRow('Use Blip?', 'useStepBlip', 'useStepBlip', 'Toggle if the quest uses a blip'),
 			].join('');
+			if (useStepBlip) {
+				formRows += [
+					createFormRow('Blip Type', 'blipType', 'blipType', 'Type the Blip Type', 'The type of the blip // normal or area'),
+					createFormRow('Blip Coords', 'blipCoords', 'blipCoords', 'Ex. vector3(-1046.6208, 4909.0034, 209.2752)', 'The coordinates of the blip', 'https://docs.fivem.net/docs/game-references/blips/'),
+					createNumberInputRow('Blip Sprite', 'blipSprite', 'blipSprite', 'Type the Blip Sprite', 'The sprite of the blip'),
+					createNumberInputRow('Blip Display', 'blipDisplay', 'blipDisplay', 'Type the Blip Display', 'The display of the blip'),
+					createNumberInputRow('Blip Color', 'blipColor', 'blipColor', 'Type the Blip Color', 'The color of the blip'),
+					createNumberInputRow('Blip Alpha', 'blipAlpha', 'blipAlpha', 'Type the Blip Alpha', 'The alpha of the blip'),
+					createNumberInputRow('Blip Scale', 'blipScale', 'blipScale', 'Type the Blip Scale', 'The scale of the blip'),
+					createNumberInputRow('Blip Radius', 'blipRadius', 'blipRadius', 'Type the Blip Radius', 'The radius of the blip // Only for area blips'),
+					createCheckboxRow('Blip Short Range', 'blipShortRange', 'blipShortRange', 'Toggle if the blip is short range // Visible only when close to the blip and not on the minimap'),
+					createFormRow('Blip Label', 'blipLabel', 'blipLabel', 'Type the Blip Label', 'The label of the blip')
+				].join('');
+			}
+
 			updateTemplate(selectedOption);
 			break;
 		case 'peds':
-			if (!isMpModel) {
 				formRows = [
 					createFormRow('Ped ID', 'pedId', 'pedId', 'Type the Ped ID', 'The ID of the ped that will give the quest'),
 					createCheckboxRow('Is MP Model?', 'isMpModel', 'isMpModel', 'Toggle if the ped is a MP Model'),
@@ -284,8 +303,8 @@ function render(selectedOption) {
 					createFormRow('Animation Dict', 'animationDict', 'animationDict', 'Type the Animation Dict', 'The animation dict of the ped', 'https://forge.plebmasters.de/animations/'),
 					createFormRow('Animation Name', 'animationName', 'animationName', 'Type the Animation Name', 'The animation name of the ped', 'https://forge.plebmasters.de/animations/'),
 				].join('');
-			} else {
-				formRows = [
+			if (isMpModel) {
+				formRows += [
 					createFormRow('Ped ID', 'pedId', 'pedId', 'Type the Ped ID', 'The ID of the ped that will give the quest'),
 					createCheckboxRow('Is MP Model?', 'isMpModel', 'isMpModel', 'Toggle if the ped is a MP Model'),
 					createNumberInputRow('Ped Type', 'pedType', 'pedType', 'Type the Ped Type', 'The type of the ped', 'https://runtime.fivem.net/doc/natives/?_0x6C9DD2D0499A4446'),
@@ -329,7 +348,7 @@ function render(selectedOption) {
 
 $(document).ready(function () {
 	initDefaults();
-	let selectedOption = $('input[name="config"]:checked').val();
+	let selectedOption = $('.nav-item.active').attr('id');
 	render(selectedOption);
 	$('#formContainer').html(formRows);
 	gsap.fromTo(
@@ -362,9 +381,12 @@ $(document).ready(function () {
 			ease: "power1.out",
 		},
 	);
-	$('input[name="config"]').on('change', function () {
+	$('.nav-item').on('click', function (event) {
+		event.preventDefault();
+		$('.nav-item.active').removeClass('active');
+		$(this).addClass('active');
 		initDefaults();
-		selectedOption = $(this).val();
+		selectedOption = $(this).attr('id');
 		render(selectedOption);
 
 		$('#formContainer').html(formRows);
@@ -384,7 +406,6 @@ $(document).ready(function () {
 		);
 	});
 	$('#formContainer').on('input', '.form-row input, .form-row textarea', function () {
-		console.log(selectedOption)
 		updateTemplate(selectedOption)
 		let changedInput = $(this).attr('name');
 
@@ -394,9 +415,62 @@ $(document).ready(function () {
 			$('#formContainer').html(formRows);
 			// Reimposta lo stato del checkbox dopo aver rigenerato il form
 			$('#isMpModel').prop('checked', isMpModel);
+		} else if (changedInput === 'useBlip') {
+			useBlip = $(this).is(':checked');
+			render('PrimaryQuest');
+			$('#formContainer').html(formRows);
+			// Reimposta lo stato del checkbox dopo aver rigenerato il form
+			$('#useBlip').prop('checked', useBlip);
+		} else if (changedInput === 'useStepBlip') {
+			useStepBlip = $(this).is(':checked');
+			render('step');
+			$('#formContainer').html(formRows);
+			// Reimposta lo stato del checkbox dopo aver rigenerato il form
+			$('#useStepBlip').prop('checked', useStepBlip);
 		}
 	});
+	showCode();
+	$('#codeContainer').css('transform', 'translateX(1500px)');
 });
+
+let showingCode = false;
+function showCode() {
+	let button = $('#showCode');
+
+	button.on('click', function () {
+		if (!showingCode) {
+			gsap.to(
+				'#codeContainer',
+				{
+					opacity: 1,
+					x: 0,
+					y: '-50%',
+					duration: 0.5,
+					ease: "power1.out",
+				}
+			)
+			showingCode = true;
+			$('#showCode').html(`
+				<i class="ti ti-code"></i>
+				Hide Code`);
+		} else {
+			gsap.to(
+				'#codeContainer',
+				{
+					opacity: 0,
+					x: 1500,
+					y: '-50%',
+					duration: 0.5,
+					ease: "power1.out",
+				}
+			)
+			showingCode = false;
+			$('#showCode').html(`
+				<i class="ti ti-code"></i>
+				Show Code`);
+		}
+	})
+}
 
 function createItemsStartersTemplate(key, questToStart, mustRemove) {
 	return `
@@ -419,6 +493,27 @@ function createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_gi
 		completedEvent = 'nil';
 	}
 
+	let blip = '';
+
+	if (useBlip) {
+		blip = `blip = {
+				use = ${useBlip}, --! Toggle if the quest uses a blip
+				type = ${blipType}, --! The type of the blip // normal or area
+				coords = ${blipCoords}, --! The coordinates of the blip // https://docs.fivem.net/docs/game-references/blips/
+				sprite = ${blipSprite}, --! The sprite of the blip
+				display = ${blipDisplay}, --! The display of the blip
+				color = ${blipColor}, --! The color of the blip
+				alpha = ${blipAlpha}, --! The alpha of the blip
+				scale = ${blipScale}.0, --! The scale of the blip
+				radius = ${blipRadius}.0, --! The radius of the blip // Only for area blips
+				shortRange = ${blipShortRange}, --! Toggle if the blip is short range // Visible only when close to the blip and not on the minimap
+				label = ${blipLabel}, --! The label of the blip
+			},`;
+	} else {
+		blip = 'blip = {}';
+	}
+
+
 	return `
 		[${key}] = { --! Quest ID (must be unique)
 
@@ -438,19 +533,7 @@ function createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_gi
 			completedEvent = ${completedEvent}, --! The event that will be triggered when the quest is completed
 
 			-- Blip Settings
-			blip = {
-				use = ${useBlip}, --! Toggle if the quest uses a blip
-				type = ${blipType}, --! The type of the blip // normal or area
-				coords = ${blipCoords}, --! The coordinates of the blip // https://docs.fivem.net/docs/game-references/blips/
-				sprite = ${blipSprite}, --! The sprite of the blip
-				display = ${blipDisplay}, --! The display of the blip
-				color = ${blipColor}, --! The color of the blip
-				alpha = ${blipAlpha}, --! The alpha of the blip
-				scale = ${blipScale}.0, --! The scale of the blip
-				radius = ${blipRadius}.0, --! The radius of the blip // Only for area blips
-				shortRange = ${blipShortRange}, --! Toggle if the blip is short range // Visible only when close to the blip and not on the minimap
-				label = ${blipLabel}, --! The label of the blip
-			},
+			${blip}
 
 			-- PED Settings
 			usePed = false, --! Toggle if the quest uses a ped
@@ -465,11 +548,31 @@ function createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_gi
 		},`;
 }
 
-function createStepTemplate(coords, message, title, completeMessage, gui, expReward, stepEvent, stepEventType) {
+function createStepTemplate(coords, message, title, completeMessage, gui, expReward, stepEvent, stepEventType, useStepBlip, blipType, blipCoords, blipSprite, blipDisplay, blipColor, blipAlpha, blipScale, blipRadius, blipShortRange, blipLabel) {
 	if (stepEvent !== 'nil' && stepEvent !== '') {
 		stepEvent = `{ type = ${stepEvent}, eventName = ${stepEventType} }`;
 	} else {
 		stepEvent = 'nil';
+	}
+
+	let stepBlip = '';
+
+	if (useStepBlip) {
+		stepBlip = `blip = {
+				use = ${useStepBlip}, --! Toggle if the quest uses a blip
+				type = ${blipType}, --! The type of the blip // normal or area
+				coords = ${blipCoords}, --! The coordinates of the blip // https://docs.fivem.net/docs/game-references/blips/
+				sprite = ${blipSprite}, --! The sprite of the blip
+				display = ${blipDisplay}, --! The display of the blip
+				color = ${blipColor}, --! The color of the blip
+				alpha = ${blipAlpha}, --! The alpha of the blip
+				scale = ${blipScale}.0, --! The scale of the blip
+				radius = ${blipRadius}.0, --! The radius of the blip // Only for area blips
+				shortRange = ${blipShortRange}, --! Toggle if the blip is short range // Visible only when close to the blip and not on the minimap
+				label = ${blipLabel}, --! The label of the blip
+			},`;
+	} else {
+		stepBlip = 'blip = {}';
 	}
 
 	return `
@@ -483,6 +586,7 @@ function createStepTemplate(coords, message, title, completeMessage, gui, expRew
 			removeItem = {}, --! The item(s) that will be removed from the player's inventory when the step is completed // Please add manually // Ex. { item = "item", amount = 1 }
 			expReward = ${expReward}, --! The amount of EXP to reward the player with when the step is completed
 			stepEvent = ${stepEvent},
+			${stepBlip}
 		},`;
 }
 
@@ -696,8 +800,19 @@ function updateTemplate(selectedOption) {
 			expReward = getValue('expReward', 0, false);
 			stepEvent = getValue('stepEvent', 'nil');
 			stepEventType = getEventVaulue('stepEventType');
+			useStepBlip = getValue('useStepBlip', false, false);
+			blipType = getValue('blipType', '"WARNING: NO BLIP TYPE"');
+			blipCoords = getValue('blipCoords', '"WARNING: NO COORDS"', false);
+			blipSprite = getValue('blipSprite', 0, false);
+			blipDisplay = getValue('blipDisplay', 0, false);
+			blipColor = getValue('blipColor', 0, false);
+			blipAlpha = getValue('blipAlpha', 0, false);
+			blipScale = getValue('blipScale', 0, false);
+			blipRadius = getValue('blipRadius', 0, false);
+			blipShortRange = getValue('blipShortRange', false, false);
+			blipLabel = getValue('blipLabel', '"WARNING: NO BLIP LABEL"');
 
-			template = createStepTemplate(coords, message, title, completeMessage, gui, expReward, stepEvent, stepEventType);
+			template = createStepTemplate(coords, message, title, completeMessage, gui, expReward, stepEvent, stepEventType, useStepBlip, blipType, blipCoords, blipSprite, blipDisplay, blipColor, blipAlpha, blipScale, blipRadius, blipShortRange, blipLabel);
 			break;
 		case 'peds':
 			pedId = getValue('pedId', '"WARNING: NO KEY"');

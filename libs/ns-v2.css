@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 29th February 2024 1:28:07 am
+ * Last Modified: Thursday, 29th February 2024 10:14:39 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -1246,16 +1246,6 @@ a {
 	color: var(--primary);
 }
 
-.active {
-	color: var(--primary);
-	border-bottom: 1px solid var(--primary);
-	filter: var(--drop-shadow-primary);
-}
-
-.active > a {
-	color: var(--primary);
-}
-
 .inactive,
 .inactive > a {
 	color: var(--text-subtle);
@@ -1293,6 +1283,8 @@ a {
 .footer {
 	width: 100%;
 	border-top: 2px solid var(--border-subtle);
+	position: absolute;
+	bottom: 0;
 }
 
 .d-flex {
@@ -3313,7 +3305,40 @@ input[type='number'] {
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
-	z-index: 100;
+	z-index: 1;
+}
+
+.navbar-nav {
+	list-style: none;
+}
+
+.nav-item {
+	display: flex;
+	align-items: center;
+	background-color: var(--background-darker);
+	border-radius: var(--ns-border-radius);
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--border);
+	transition: var(--ease);
+	margin: 0.5rem 0.5rem;
+}
+
+.nav-item:hover {
+	filter: var(--drop-shadow);
+	border: 1px solid var(--text-subtle);
+	transform: translateX(5px);
+}
+
+.nav-item.active:hover {
+	filter: var(--drop-shadow);
+	border: 1px solid var(--primary);
+}
+
+.nav-item.active {
+	filter: var(--drop-shadow);
+	border: 1px solid var(--primary);
+	color: var(--primary);
+	transform: translateX(10px);
 }
 
 .fixed {
@@ -3322,6 +3347,14 @@ input[type='number'] {
 
 .sticky {
 	position: sticky;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.relative {
+	position: relative;
 }
 
 .timeline {

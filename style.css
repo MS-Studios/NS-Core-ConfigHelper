@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 29th February 2024 1:20:42 am
+ * Last Modified: Thursday, 29th February 2024 10:16:23 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -24,68 +24,25 @@
 	display: flex;
 }
 
-#config {
-	background-color: var(--background-darker);
-	padding: 0.5rem;
-	border-radius: 5px;
-	display: inline-flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-}
-
-#config input[type="radio"] {
-	display: none; /* Nasconde il pulsante radio originale */
-}
-
-#config label {
-	color: var(--text);
-	font-size: 1rem;
-	position: relative;
-	padding-left: 30px; /* Spazio per il nuovo pulsante radio */
-	transition: var(--ease);
-}
-
-#config label:hover {
-	cursor: pointer;
-}
-
-#config label::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 20px;
-	height: 20px;
-	border: 2px solid var(--primary-subtle);
-	border-radius: 25%;
-}
-
-#config label::after {
-	content: "";
-	position: absolute;
-	left: 5px;
-	top: 5px;
-	width: 10px;
-	height: 10px;
-	border-radius: 25%;
-	background-color: var(--primary);
-	opacity: 0; /* Inizialmente nascosto */
-	transition: var(--ease);
-}
-
-#config input[type="radio"]:checked + label::after {
-	opacity: 1; /* Mostra il pallino quando il pulsante radio è selezionato */
-}
-
 #output {
 	font-family: 'Courier New', Courier, monospace;
 	border-radius: 5px;
 	border: 1px solid var(--border);
+	max-height: 500px;
+	max-width: 800px;
+	filter: var(--drop-shadow);
 }
 
 #codeContainer {
-	position: relative;
+	position: absolute;
+	top: 50%;
+	right: 0;
+}
+
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+	background: var(--background-darker);
+	border-radius: 5px;
+	padding: 5px;
 }
 
 #copyButton {
@@ -96,8 +53,9 @@
 	border: 1px solid var(--border);
 	border-radius: 5px;
 	padding: 5px;
-	margin: 5px;
 	transition: var(--ease);
+	z-index: 1;
+	filter: var(--drop-shadow);
 }
 
 #copyButton:hover {
