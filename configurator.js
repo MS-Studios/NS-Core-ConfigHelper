@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 29th February 2024 1:54:33 am
+ * Last Modified: Thursday, 29th February 2024 4:51:10 pm
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -240,7 +240,19 @@ function render(selectedOption) {
 				createNumberInputRow('EXP Reward', 'expReward', 'expReward', 'Type the EXP Amount', 'The amount of EXP to reward the player with'),
 				createFormRow('Zone', 'zone', 'zone', '', 'The zone where the quest will be available to start | NS-Medic required'),
 				createRowPlusCheckbox('Starting Event', 'startEvent', 'startEvent', 'Type the event name', 'The event that will be triggered when the quest is started', 'startingEventType', 'startingEventType', 'Starting Event Type'),
-				createRowPlusCheckbox('Completed Event', 'completedEvent', 'completedEvent', 'Type the event name', 'The event that will be triggered when the quest is completed', 'completeEventType', 'completeEventType', 'Completed Event Type')
+				createRowPlusCheckbox('Completed Event', 'completedEvent', 'completedEvent', 'Type the event name', 'The event that will be triggered when the quest is completed', 'completeEventType', 'completeEventType', 'Completed Event Type'),
+				createCheckboxRow('Use Blip?', 'useBlip', 'useBlip', 'Toggle if the quest uses a blip'),
+				createFormRow('Blip Type', 'blipType', 'blipType', 'Type the Blip Type', 'The type of the blip // normal or area'),
+				createFormRow('Blip Coords', 'blipCoords', 'blipCoords', 'Ex. vector3(-1046.6208, 4909.0034, 209.2752)', 'The coordinates of the blip // https://docs.fivem.net/docs/game-references/blips/'),
+				createNumberInputRow('Blip Sprite', 'blipSprite', 'blipSprite', 'Type the Blip Sprite', 'The sprite of the blip'),
+				createNumberInputRow('Blip Display', 'blipDisplay', 'blipDisplay', 'Type the Blip Display', 'The display of the blip'),
+				createNumberInputRow('Blip Color', 'blipColor', 'blipColor', 'Type the Blip Color', 'The color of the blip'),
+				createNumberInputRow('Blip Alpha', 'blipAlpha', 'blipAlpha', 'Type the Blip Alpha', 'The alpha of the blip'),
+				createNumberInputRow('Blip Scale', 'blipScale', 'blipScale', 'Type the Blip Scale', 'The scale of the blip'),
+				createNumberInputRow('Blip Radius', 'blipRadius', 'blipRadius', 'Type the Blip Radius', 'The radius of the blip // Only for area blips'),
+				createCheckboxRow('Blip Short Range', 'blipShortRange', 'blipShortRange', 'Toggle if the blip is short range // Visible only when close to the blip and not on the minimap'),
+				createFormRow('Blip Label', 'blipLabel', 'blipLabel', 'Type the Blip Label', 'The label of the blip')
+
 			].join('');
 			updateTemplate(selectedOption);
 			break;
@@ -394,7 +406,7 @@ function createItemsStartersTemplate(key, questToStart, mustRemove) {
 		},`;
 }
 
-function createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_give_after, items_require, level_require, label, description, expReward, zone, startEvent, startingEventType, completedEvent, completedEventType) {
+function createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_give_after, items_require, level_require, label, description, expReward, zone, startEvent, startingEventType, completedEvent, completedEventType, useBlip, blipType, blipCoords, blipSprite, blipDisplay, blipColor, blipAlpha, blipScale, blipRadius, blipShortRange, blipLabel) {
 	if (startEvent !== 'nil' && startEvent !== '') {
 		startEvent = `{ type = ${startingEventType}, eventName = ${startEvent} }`;
 	} else {
@@ -410,14 +422,14 @@ function createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_gi
 	return `
 		[${key}] = { --! Quest ID (must be unique)
 
-			-- Settings for quest
+			-- General Settings
 			quest_depend = ${quest_depend}, --! Quest ID that must be completed before this quest can be started
 			quest_unrequire = ${quest_unrequire}, --! Quest ID that must be inactive before starting this quest
 			quest_give_after = ${quest_give_after}, --! Quest ID that will be given after this quest is completed
 			items_require = ${items_require}, --! Item ID that will be required to start the quest
 			level_require = ${level_require}, --! Level required to start the quest
 
-			-- Settings for quest
+			-- Quest Settings
 			label = ${label}, --! The name of the quest that will be visible to the players
 			description = ${description}, --! The description of the quest that will be visible to the players in the Main Interface
 			expReward = ${expReward}, --! The amount of EXP to reward the player with
@@ -425,11 +437,31 @@ function createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_gi
 			startEvent = ${startEvent}, --! The event that will be triggered when the quest is started
 			completedEvent = ${completedEvent}, --! The event that will be triggered when the quest is completed
 
-			-- Settings for PED
+			-- Blip Settings
+			blip = {
+				use = ${useBlip}, --! Toggle if the quest uses a blip
+				type = ${blipType}, --! The type of the blip // normal or area
+				coords = ${blipCoords}, --! The coordinates of the blip // https://docs.fivem.net/docs/game-references/blips/
+				sprite = ${blipSprite}, --! The sprite of the blip
+				display = ${blipDisplay}, --! The display of the blip
+				color = ${blipColor}, --! The color of the blip
+				alpha = ${blipAlpha}, --! The alpha of the blip
+				scale = ${blipScale}.0, --! The scale of the blip
+				radius = ${blipRadius}.0, --! The radius of the blip // Only for area blips
+				shortRange = ${blipShortRange}, --! Toggle if the blip is short range // Visible only when close to the blip and not on the minimap
+				label = ${blipLabel}, --! The label of the blip
+			},
+
+			-- PED Settings
 			usePed = false, --! Toggle if the quest uses a ped
 			can_take_quest = true, --! Toggle if the player can take the quest from the ped
 			marker_coords = nil, --! The coordinates where the player can take the quest
-			pedSettings = PED.Quest[${key}] --! The settings for the ped
+			pedSettings = PED.Quest[${key}], --! The settings for the ped
+
+			-- Steps Settings
+			steps = { --! The steps of the quest
+
+			},
 		},`;
 }
 
@@ -640,8 +672,19 @@ function updateTemplate(selectedOption) {
 			startingEventType = getEventVaulue('startingEventType');
 			completedEvent = getValue('completedEvent', 'nil');
 			completedEventType = getEventVaulue('completeEventType');
+			useBlip = getValue('useBlip', false, false);
+			blipType = getValue('blipType', '"WARNING: NO BLIP TYPE"');
+			blipCoords = getValue('blipCoords', '"WARNING: NO COORDS"', false);
+			blipSprite = getValue('blipSprite', 0, false);
+			blipDisplay = getValue('blipDisplay', 0, false);
+			blipColor = getValue('blipColor', 0, false);
+			blipAlpha = getValue('blipAlpha', 0, false);
+			blipScale = getValue('blipScale', 0, false);
+			blipRadius = getValue('blipRadius', 0, false);
+			blipShortRange = getValue('blipShortRange', false, false);
+			blipLabel = getValue('blipLabel', '"WARNING: NO BLIP LABEL"');
 
-			template = createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_give_after, items_require, level_require, label, description, expReward, zone, startEvent, startingEventType, completedEvent, completedEventType);
+			template = createPrimaryQuestTemplate(key, quest_depend, quest_unrequire, quest_give_after, items_require, level_require, label, description, expReward, zone, startEvent, startingEventType, completedEvent, completedEventType, useBlip, blipType, blipCoords, blipSprite, blipDisplay, blipColor, blipAlpha, blipScale, blipRadius, blipShortRange, blipLabel);
 			break;
 		case 'step':
 
