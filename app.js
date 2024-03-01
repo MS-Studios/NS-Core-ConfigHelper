@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 29th February 2024 1:57:42 am
+ * Last Modified: Friday, 1st March 2024 2:28:47 am
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -87,8 +87,8 @@ $(document).ready(function () {
 	// Random background quote
 	bgRandomQuote();
 	setInterval(bgRandomQuote, 5000);
-	});
 
+});
 
 function showNotification(message, type, time) {
 
