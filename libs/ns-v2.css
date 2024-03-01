@@ -7,7 +7,7 @@
  * The modification of this file is prohibited without explicit permission from Nebula Studios.
  * Any unauthorized modification of this file will result in support being revoked.
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- * Last Modified: Thursday, 29th February 2024 10:14:39 pm
+ * Last Modified: Friday, 1st March 2024 2:09:55 am
  * Modified By: MS Studios
  *             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  * License: Creative Commons Attribution Non-commercial No-derivatives 4.0 International
@@ -1283,7 +1283,7 @@ a {
 .footer {
 	width: 100%;
 	border-top: 2px solid var(--border-subtle);
-	position: absolute;
+	position: relative;
 	bottom: 0;
 }
 
@@ -3381,4 +3381,12 @@ input[type='number'] {
 .timeline-item:hover > span {
 	color: var(--warning);
 	filter: drop-shadow(0 0 10px var(--warning));
+}
+
+.hero-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: fit-content;
 }
